@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "493909264186",
+    "firebase_url": "https://project-for-cegeka.firebaseio.com",
+    "project_id": "project-for-cegeka",
+    "storage_bucket": "project-for-cegeka.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493909264186:android:b0aa35457affdbd0",
+        "android_client_info": {
+          "package_name": "com.example.cegeka.timenow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "493909264186-pev9vkgjb5sdp1kmvfnipk4qho38lbro.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cegeka.timenow",
+            "certificate_hash": "5a1a14dacdc1428b140244aa063ddd165c8221c2"
+          }
+        },
+        {
+          "client_id": "493909264186-tv1fu3ir10njcepbc95coap8vghgfh27.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "493909264186-tv1fu3ir10njcepbc95coap8vghgfh27.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYUJCea4Xf4yjrzCyurcDVr4QrG0MiBhE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "493909264186-tv1fu3ir10njcepbc95coap8vghgfh27.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
