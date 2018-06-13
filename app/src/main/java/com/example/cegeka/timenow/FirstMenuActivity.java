@@ -18,18 +18,12 @@ public class FirstMenuActivity extends AppCompatActivity {
     List<AuthUI.IdpConfig> providers;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actitivity_firstmenu);
         providers = Arrays.asList(
                     new AuthUI.IdpConfig.PhoneBuilder().build());
-
-
-
 
        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
 
@@ -38,12 +32,8 @@ public class FirstMenuActivity extends AppCompatActivity {
        }
    }
 
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-
 
             if (requestCode == RC_SIGN_IN && resultCode == RESULT_OK) {
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
@@ -51,14 +41,9 @@ public class FirstMenuActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             }
-
-
     }
 
-
     public void Sign(View view) {
-
-
 
             providers = Arrays.asList(
                     new AuthUI.IdpConfig.PhoneBuilder().build());
@@ -69,15 +54,12 @@ public class FirstMenuActivity extends AppCompatActivity {
                             .build(),
                     RC_SIGN_IN);
 
-
             if (FirebaseAuth.getInstance().getCurrentUser() != null) {
 
                 Intent intent = new Intent(FirstMenuActivity.this, MenuActivity.class);
                 startActivity(intent);
             }
-
     }
-
 }
 
 
