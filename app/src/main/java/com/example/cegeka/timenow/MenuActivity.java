@@ -29,7 +29,6 @@ public class MenuActivity extends AppCompatActivity {
 
     }
 
-//11
 
 
      private void updateUI(FirebaseUser user)
