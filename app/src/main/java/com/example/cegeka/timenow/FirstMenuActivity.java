@@ -26,7 +26,7 @@ public class FirstMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actitivity_firstmenu);
         providers = Arrays.asList(
-                    new AuthUI.IdpConfig.EmailBuilder().build());
+                    new AuthUI.IdpConfig.PhoneBuilder().build());
 
 
 
@@ -61,7 +61,7 @@ public class FirstMenuActivity extends AppCompatActivity {
 
 
             providers = Arrays.asList(
-                    new AuthUI.IdpConfig.EmailBuilder().build());
+                    new AuthUI.IdpConfig.PhoneBuilder().build());
             startActivityForResult(
                     AuthUI.getInstance()
                             .createSignInIntentBuilder()
