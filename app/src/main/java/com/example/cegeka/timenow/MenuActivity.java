@@ -19,18 +19,16 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         mUserET=findViewById(R.id.UserET);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+        updateUI(user);
 
-       updateUI(user);
 
-       DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("message");
-
-       myRef.setValue("Hello, World!");
 
 
 
 
 
     }
+
 //11
 
 
@@ -46,8 +44,6 @@ public class MenuActivity extends AppCompatActivity {
         setResult(RESULT_OK);
       FirebaseAuth.getInstance().signOut();
        finish();
-
-
     }
 
 
