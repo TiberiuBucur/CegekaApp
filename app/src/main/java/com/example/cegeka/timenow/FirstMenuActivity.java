@@ -23,7 +23,7 @@ public class FirstMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actitivity_firstmenu);
         providers = Arrays.asList(
-                    new AuthUI.IdpConfig.PhoneBuilder().build());
+                    new AuthUI.IdpConfig.EmailBuilder().build());
 
        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
 
@@ -45,8 +45,7 @@ public class FirstMenuActivity extends AppCompatActivity {
 
     public void Sign(View view) {
 
-            providers = Arrays.asList(
-                    new AuthUI.IdpConfig.PhoneBuilder().build());
+
             startActivityForResult(
                     AuthUI.getInstance()
                             .createSignInIntentBuilder()
@@ -54,11 +53,6 @@ public class FirstMenuActivity extends AppCompatActivity {
                             .build(),
                     RC_SIGN_IN);
 
-            if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-
-                Intent intent = new Intent(FirstMenuActivity.this, MenuActivity.class);
-                startActivity(intent);
-            }
     }
 }
 

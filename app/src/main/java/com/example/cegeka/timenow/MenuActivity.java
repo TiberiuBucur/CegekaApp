@@ -38,6 +38,9 @@ public class MenuActivity extends AppCompatActivity {
     {
         if(user!=null)
       mUserET.setText(user.getDisplayName());
+
+
+
     }
 
     public void SignOff(View view)
