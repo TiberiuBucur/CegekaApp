@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MenuActivity extends AppCompatActivity {
     TextView mUserTV;
     ImageButton BellBtn;
+    Button SearchBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class MenuActivity extends AppCompatActivity {
         mUserTV=findViewById(R.id.UserTV);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         updateUI(user);
+        SearchBtn = (Button) findViewById(R.id.SearchBtn);
         BellBtn = (ImageButton) findViewById(R.id.BellBtn);
         BellBtn.setOnClickListener(new View.OnClickListener() {
             @Override
