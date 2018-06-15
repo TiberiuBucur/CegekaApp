@@ -12,7 +12,7 @@ public class NotificationActivity extends AppCompatActivity {
 
     ListView NoteListView = null;
     List<String> adapterList;
-    const int hourms = 3600000;
+    static int hourms = 3600000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

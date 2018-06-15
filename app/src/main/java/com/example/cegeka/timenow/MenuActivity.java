@@ -37,6 +37,13 @@ public class MenuActivity extends AppCompatActivity {
                 BellBtn.setImageResource(R.drawable.bell2);
             }
         });
+        SearchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
     }
      private void updateUI(FirebaseUser user)
     {
