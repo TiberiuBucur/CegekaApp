@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -15,14 +16,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 public class MenuActivity extends AppCompatActivity {
-    EditText mUserET;
+    TextView mUserTV;
     ImageButton BellBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        mUserET=findViewById(R.id.UserET);
+        mUserTV=findViewById(R.id.UserTV);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         updateUI(user);
         BellBtn = (ImageButton) findViewById(R.id.BellBtn);
@@ -30,14 +31,15 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, NotificationActivity.class);
-                BellBtn.setBackgroundResource(R.drawable.bell2);
+                startActivity(intent);
+                BellBtn.setImageResource(R.drawable.bell2);
             }
         });
     }
      private void updateUI(FirebaseUser user)
     {
         if(user!=null)
-      mUserET.setText(user.getDisplayName());
+        mUserTV.setText(user.getDisplayName());
     }
 
     public void SignOff(View view)
