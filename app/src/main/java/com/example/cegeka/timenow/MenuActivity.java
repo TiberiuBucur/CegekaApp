@@ -38,6 +38,7 @@ public class MenuActivity extends AppCompatActivity {
     }
      private void updateUI(FirebaseUser user)
     {
+        
         if(user!=null)
         mUserTV.setText(user.getDisplayName());
     }
