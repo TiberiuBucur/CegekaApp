@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MenuActivity extends AppCompatActivity {
     TextView mUserTV;
-    ImageButton BellBtn;
+    //ImageButton BellBtn;
     Button SearchBtn;
 
     @Override
@@ -28,15 +28,15 @@ public class MenuActivity extends AppCompatActivity {
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         updateUI(user);
         SearchBtn = (Button) findViewById(R.id.SearchBtn);
-        BellBtn = (ImageButton) findViewById(R.id.BellBtn);
-        BellBtn.setOnClickListener(new View.OnClickListener() {
+        //BellBtn = (ImageButton) findViewById(R.id.BellBtn);
+        /*BellBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, NotificationActivity.class);
                 startActivity(intent);
                 BellBtn.setImageResource(R.drawable.bell2);
             }
-        });
+        });*/
         SearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

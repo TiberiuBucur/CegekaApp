@@ -45,7 +45,6 @@ public class FirstMenuActivity extends AppCompatActivity {
 
            FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
            DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
-
            ref.addValueEventListener(new ValueEventListener() {
                @Override
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -54,7 +53,10 @@ public class FirstMenuActivity extends AppCompatActivity {
                        firstintent=new Intent(FirstMenuActivity.this, FirstLoginActivity.class);
 
                    else
+                   {
+
                        firstintent=new Intent(FirstMenuActivity.this, MenuActivity.class);
+                   }
 
                }
 
