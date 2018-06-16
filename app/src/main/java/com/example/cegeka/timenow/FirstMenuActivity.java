@@ -77,13 +77,13 @@ public class FirstMenuActivity extends AppCompatActivity {
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
 
                     FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
-                    DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+user.getUid()+"/firstTime");
+                    DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+user.getUid());
 
                     ref.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                            if(dataSnapshot.getValue(String.class)==null)
+                            if(dataSnapshot.child("firstTime").getValue(String.class)==null)
                                firstintent=new Intent(FirstMenuActivity.this, FirstLoginActivity.class);
 
                             else
