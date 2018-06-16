@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -32,23 +33,23 @@ public class FirstMenuActivity extends AppCompatActivity {
     private static final int RC_MENU = 10;
     private Intent firstintent;
     List<AuthUI.IdpConfig> providers;
-
+    Button mBut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actitivity_firstmenu);
         providers = Arrays.asList(
                     new AuthUI.IdpConfig.EmailBuilder().build());
-
+       mBut=findViewById(R.id.SignInBtn);
 
        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-
+            mBut.setEnabled(false);
            FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
            DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid());
            ref.addListenerForSingleValueEvent(new ValueEventListener() {
                @Override
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                        mBut.setEnabled(true);
                    if (dataSnapshot.child("firstTime").getValue(String.class) == null)
                        startActivity(new Intent(FirstMenuActivity.this, FirstLoginActivity.class));
 
@@ -62,6 +63,7 @@ public class FirstMenuActivity extends AppCompatActivity {
 
                @Override
                public void onCancelled(@NonNull DatabaseError error) {
+               mBut.setEnabled(true);
                }
            });
 
@@ -74,14 +76,14 @@ public class FirstMenuActivity extends AppCompatActivity {
 
             if (requestCode == RC_SIGN_IN && resultCode == RESULT_OK) {
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-
+mBut.setEnabled(false);
                     FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
                     DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+user.getUid());
 
                     ref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+mBut.setEnabled(true);
                             if(dataSnapshot.child("firstTime").getValue(String.class)==null)
                                 startActivity(new Intent(FirstMenuActivity.this, FirstLoginActivity.class));
 
@@ -91,6 +93,7 @@ public class FirstMenuActivity extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+                        mBut.setEnabled(true);
                         }
                     });
 
