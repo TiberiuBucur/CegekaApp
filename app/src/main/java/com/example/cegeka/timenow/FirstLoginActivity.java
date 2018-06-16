@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,8 +22,8 @@ import java.sql.Ref;
 
 public class FirstLoginActivity extends AppCompatActivity {
 
-
-
+    RadioButton TypeBtn;
+    EditText AdressET;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +31,13 @@ public class FirstLoginActivity extends AppCompatActivity {
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
 ref.setValue("yes");
 
-
-
+        TypeBtn = (RadioButton) findViewById(R.id.TypeBtn);
+        AdressET = (EditText) findViewById(R.id.AdressET);
+        if(TypeBtn.isChecked())
+        {
+            AdressET.setEnabled(true);
+            AdressET.setFocusable(true);
+        }
     }
 
 

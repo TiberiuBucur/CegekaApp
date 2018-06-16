@@ -89,6 +89,6 @@
         android:scaleType="fitXY"
         app:layout_constraintStart_toEndOf="@+id/FavortiesBtn"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/Settings" />
+        app:srcCompat="@drawable/settings" />
 
 </android.support.constraint.ConstraintLayout>

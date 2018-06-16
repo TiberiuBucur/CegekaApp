@@ -46,16 +46,12 @@ public class FirstMenuActivity extends AppCompatActivity {
            FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
            DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
 
-
-
            ref.addValueEventListener(new ValueEventListener() {
                @Override
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-
                    if (dataSnapshot.getValue(String.class) == null)
                        firstintent=new Intent(FirstMenuActivity.this, FirstLoginActivity.class);
-
 
                    else
                        firstintent=new Intent(FirstMenuActivity.this, MenuActivity.class);
@@ -72,11 +68,6 @@ public class FirstMenuActivity extends AppCompatActivity {
        }
    }
 
-
-
-
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -86,17 +77,9 @@ public class FirstMenuActivity extends AppCompatActivity {
                     FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
                     DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+user.getUid()+"/firstTime");
 
-
-
-
-
-
-
-
                     ref.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
 
                             if(dataSnapshot.getValue(String.class)==null)
                                firstintent=new Intent(FirstMenuActivity.this, FirstLoginActivity.class);
@@ -116,13 +99,6 @@ public class FirstMenuActivity extends AppCompatActivity {
             }
     }
 
-
-
-
-
-
-
-
     public void Sign(View view) {
 
             startActivityForResult(
@@ -139,7 +115,6 @@ public class FirstMenuActivity extends AppCompatActivity {
         firstintent=intent;
 
     }
-
 
 
 }
