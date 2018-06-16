@@ -45,17 +45,17 @@ public class FirstMenuActivity extends AppCompatActivity {
 
            FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
            DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid());
-           ref.addValueEventListener(new ValueEventListener() {
+           ref.addListenerForSingleValueEvent(new ValueEventListener() {
                @Override
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                    if (dataSnapshot.child("firstTime").getValue(String.class) == null)
-                       firstintent=new Intent(FirstMenuActivity.this, FirstLoginActivity.class);
+                       startActivity(new Intent(FirstMenuActivity.this, FirstLoginActivity.class));
 
                    else
                    {
 
-                       firstintent=new Intent(FirstMenuActivity.this, MenuActivity.class);
+                       startActivity(new Intent(FirstMenuActivity.this, MenuActivity.class));
                    }
 
                }
@@ -65,8 +65,7 @@ public class FirstMenuActivity extends AppCompatActivity {
                }
            });
 
-           if (firstintent!=null)
-               startActivity(firstintent);
+
        }
    }
 
@@ -79,23 +78,22 @@ public class FirstMenuActivity extends AppCompatActivity {
                     FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
                     DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+user.getUid());
 
-                    ref.addValueEventListener(new ValueEventListener() {
+                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                             if(dataSnapshot.child("firstTime").getValue(String.class)==null)
-                               firstintent=new Intent(FirstMenuActivity.this, FirstLoginActivity.class);
+                                startActivity(new Intent(FirstMenuActivity.this, FirstLoginActivity.class));
 
                             else
-                                firstintent=new Intent(FirstMenuActivity.this, MenuActivity.class);
+                                startActivity(new Intent(FirstMenuActivity.this, MenuActivity.class));
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                         }
                     });
-                    if (firstintent!=null)
-                      startActivity(firstintent);
+
 
                 }
             }
