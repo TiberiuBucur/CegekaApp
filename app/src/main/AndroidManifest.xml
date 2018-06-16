@@ -19,7 +19,8 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".NotificationActivity" />
         <activity android:name=".FirstLoginActivity" />
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".companyScreenActivity"></activity>
     </application>
 
 </manifest>
