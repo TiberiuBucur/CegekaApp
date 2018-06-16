@@ -24,7 +24,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        mUserTV=findViewById(R.id.UserTV);
+      /*  mUserTV=findViewById(R.id.UserTV);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         updateUI(user);
         SearchBtn = (Button) findViewById(R.id.SearchBtn);
@@ -47,8 +47,8 @@ public class MenuActivity extends AppCompatActivity {
     }
      private void updateUI(FirebaseUser user)
     {
-        if(user!=null)
-        mUserTV.setText(user.getDisplayName());
+      //  if(user!=null)
+  //      mUserTV.setText(user.getDisplayName());
     }
 
     public void SignOff(View view)
