@@ -47,6 +47,8 @@ public class FirstMenuActivity extends AppCompatActivity {
            FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
            DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid());
            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+
+
                @Override
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         mBut.setEnabled(true);
@@ -56,7 +58,9 @@ public class FirstMenuActivity extends AppCompatActivity {
                    else
                    {
 
-                       startActivity(new Intent(FirstMenuActivity.this, MenuActivity.class));
+                       startActivity(new Intent(FirstMenuActivity.this,companyScreenActivity.class));
+
+                       //startActivity(new Intent(FirstMenuActivity.this, MenuActivity.class));
                    }
 
                }
@@ -112,14 +116,6 @@ mBut.setEnabled(true);
                     RC_SIGN_IN);
 
     }
-
-    public void setIntent(Intent intent)
-    {
-        firstintent=intent;
-
-    }
-
-
 }
 
 
