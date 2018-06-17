@@ -12,7 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class companyScreenActivity extends AppCompatActivity {
+public class CompanyMenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,6 @@ public class companyScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_company_screen);
 
         TextView textComp = (TextView)findViewById(R.id.textView);
-        textComp.setText("Hello" + FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+        textComp.setText("Hello " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
     }
 }
