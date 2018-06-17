@@ -19,6 +19,7 @@ public class FirstLoginActivity extends AppCompatActivity {
     EditText AdressET, PhoneEt;
     Button SubmitBtn;
     DatabaseReference ref;
+    boolean alreadyCheked;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +29,15 @@ public class FirstLoginActivity extends AppCompatActivity {
         PhoneEt = (EditText) findViewById(R.id.PhoneET);
         SubmitBtn = (Button) findViewById(R.id.SubmitBtn);
         AdressET.setEnabled(false);
+        alreadyCheked=false;
         TypeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(alreadyCheked)
+                {TypeBtn.setChecked(false);alreadyCheked=false;}
+                else alreadyCheked=true;
+
+
                 if(TypeBtn.isChecked())
                 {
                     AdressET.setEnabled(true);

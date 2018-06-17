@@ -41,6 +41,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:checked="false"
+        android:duplicateParentState="false"
         android:layoutDirection="rtl"
         android:text="Este acest cont unul pentru firma?"
         android:textAlignment="textStart"
