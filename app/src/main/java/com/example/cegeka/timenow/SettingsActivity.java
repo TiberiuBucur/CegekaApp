@@ -55,6 +55,7 @@ public class SettingsActivity extends AppCompatActivity {
         FirebaseAuth.getInstance().getCurrentUser().updatePhoneNumber((PhoneAuthCredential)newNumber.getText());
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/phone");
+        ref.setValue(newNumber.getText().toString());
     }
 
     public void DoneButt(View view){
