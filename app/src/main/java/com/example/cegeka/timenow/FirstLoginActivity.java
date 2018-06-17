@@ -18,7 +18,6 @@ public class FirstLoginActivity extends AppCompatActivity {
     boolean iscompany;
     EditText AdressET, PhoneEt;
     Button SubmitBtn;
-    String Adress;
     DatabaseReference ref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,7 @@ public class FirstLoginActivity extends AppCompatActivity {
                 {
                     AdressET.setEnabled(true);
                     iscompany = true;
-                    Adress = AdressET.getText().toString();
+
                 }
                 else
                     iscompany = false;
@@ -52,15 +51,16 @@ public class FirstLoginActivity extends AppCompatActivity {
                 ref.setValue(x);
                 ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/type");
                 ref.setValue(iscompany);
+                ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/name");
+                ref.setValue(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
                 Intent intent;
                 if(iscompany)
                 {
                     ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/adress");
-                    ref.setValue(Adress);
+                    ref.setValue(AdressET.getText().toString());
                     ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
                     ref.setValue("yes");
-                    ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/name");
-                    ref.setValue(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+
                     intent = new Intent(FirstLoginActivity.this,CompanyMenuActivity.class);
                     startActivity(intent);
                     finish();
@@ -69,6 +69,7 @@ public class FirstLoginActivity extends AppCompatActivity {
                 {
                     intent = new Intent(FirstLoginActivity.this, MenuActivity.class);
                     ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
+
                     ref.setValue("yes");
                     startActivity(intent);
                     finish();

@@ -25,10 +25,10 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        TextView email = findViewById(R.id.textView2);
+        TextView email = findViewById(R.id.CmpNameTV);
         email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString());
 
-        TextView nrTel = findViewById(R.id.textView3);
+        TextView nrTel = findViewById(R.id.PhoneTV);
 
         //nrTel.setText(FirebaseAuth.getInstance().getCurrentUser().getNrTel().toString());
     }
