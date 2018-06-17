@@ -19,18 +19,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/SearchET"
-            android:layout_width="match_parent"
+        <SearchView
+            android:id="@+id/search"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Cautati"
-            android:inputType="textPersonName"
-            android:visibility="visible" />
+            android:iconifiedByDefault="false"
+            android:visibility="visible">
+
+            <requestFocus />
+        </SearchView>
 
         <ListView
             android:id="@+id/CompLv"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -29,7 +29,7 @@ public class NotificationActivity extends AppCompatActivity {
                     adapterList.add(item.Message);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(NotificationActivity.this,
-                R.layout.note_msg,R.id.NoteTV,adapterList);
+                R.layout.note_msg,R.id.NoteTV, adapterList);
         NoteListView.setAdapter(adapter);
     }
 }
