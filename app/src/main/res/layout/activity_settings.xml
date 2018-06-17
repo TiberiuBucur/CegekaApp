@@ -13,6 +13,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:text="Done"
+        android:onClick="DoneButt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -23,8 +24,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:text="Change Telephone Number"
+        android:onClick="ChangeNumber"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/EmailText" />
 
     <Button
         android:id="@+id/button3"
@@ -33,11 +35,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Change Email"
+        android:onClick="ChangeEmail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/textView2"
+        android:id="@+id/EmailText"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -48,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
     <EditText
-        android:id="@+id/textView3"
+        android:id="@+id/NumberText"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -65,6 +68,35 @@
         android:layout_marginBottom="80dp"
         android:layout_marginStart="8dp"
         android:text="Change Password"
+        android:onClick="ChangePassword"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="352dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:hint="Introduce New Password"
+        android:inputType="textPersonName"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="349dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Introduce Current Password"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
