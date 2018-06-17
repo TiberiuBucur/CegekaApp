@@ -48,21 +48,19 @@ public class FirstMenuActivity extends AppCompatActivity {
            DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid());
            ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
-
                @Override
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        mBut.setEnabled(true);
                    if (dataSnapshot.child("firstTime").getValue(String.class) == null)
                        startActivity(new Intent(FirstMenuActivity.this, FirstLoginActivity.class));
 
                    else
                    {
-
-                       startActivity(new Intent(FirstMenuActivity.this,companyScreenActivity.class));
-
-                       //startActivity(new Intent(FirstMenuActivity.this, MenuActivity.class));
+                       if(dataSnapshot.child("type").getValue(boolean.class))
+                           startActivity(new Intent(FirstMenuActivity.this,companyScreenActivity.class));
+                       else
+                           startActivity(new Intent(FirstMenuActivity.this, MenuActivity.class));
                    }
-
+                   mBut.setEnabled(true);
                }
 
                @Override
@@ -80,19 +78,23 @@ public class FirstMenuActivity extends AppCompatActivity {
 
             if (requestCode == RC_SIGN_IN && resultCode == RESULT_OK) {
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-mBut.setEnabled(false);
+                    mBut.setEnabled(false);
                     FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
                     DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+user.getUid());
 
                     ref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-mBut.setEnabled(true);
                             if(dataSnapshot.child("firstTime").getValue(String.class)==null)
                                 startActivity(new Intent(FirstMenuActivity.this, FirstLoginActivity.class));
-
                             else
-                                startActivity(new Intent(FirstMenuActivity.this, MenuActivity.class));
+                            {
+                                if(dataSnapshot.child("type").getValue(boolean.class))
+                                    startActivity(new Intent(FirstMenuActivity.this,companyScreenActivity.class));
+                                else
+                                    startActivity(new Intent(FirstMenuActivity.this, MenuActivity.class));
+                            }
+                            mBut.setEnabled(true);
                         }
 
                         @Override

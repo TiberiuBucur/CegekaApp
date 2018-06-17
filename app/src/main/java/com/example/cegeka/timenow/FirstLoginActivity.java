@@ -34,9 +34,6 @@ public class FirstLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_login);
-        ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
-ref.setValue("yes");
-
         TypeBtn = (RadioButton) findViewById(R.id.TypeBtn);
         AdressET = (EditText) findViewById(R.id.AdressET);
         PhoneEt = (EditText) findViewById(R.id.PhoneET);
@@ -70,11 +67,19 @@ ref.setValue("yes");
                 {
                     ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/adress");
                     ref.setValue(Adress);
+                    ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
+                    ref.setValue("yes");
+                    intent = new Intent(FirstLoginActivity.this,companyScreenActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
                 else
                 {
                     intent = new Intent(FirstLoginActivity.this, MenuActivity.class);
+                    ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
+                    ref.setValue("yes");
                     startActivity(intent);
+                    finish();
                 }
 
             }
