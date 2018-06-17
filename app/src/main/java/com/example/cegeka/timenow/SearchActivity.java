@@ -15,6 +15,7 @@ public class SearchActivity extends AppCompatActivity {
     String[] Names, IDs;
     ListView CmpLv;
     EditText SearchEt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
