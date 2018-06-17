@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -34,28 +35,29 @@ public class FirstLoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(alreadyCheked)
-                {TypeBtn.setChecked(false);alreadyCheked=false;}
-                else alreadyCheked=true;
-
-
+                {
+                    TypeBtn.setChecked(false);
+                    alreadyCheked=false;
+                }
+                else
+                    alreadyCheked=true;
                 if(TypeBtn.isChecked())
                 {
                     AdressET.setEnabled(true);
                     iscompany = true;
-
                 }
                 else
+                {
                     iscompany = false;
+                    AdressET.setEnabled(false);
+                }
             }
         });
-
         SubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String x;
+                String x,y;
                 x = PhoneEt.getText().toString();
-                ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/phone");
-                ref.setValue(x);
                 ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/type");
                 ref.setValue(iscompany);
                 ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/name");
@@ -63,25 +65,37 @@ public class FirstLoginActivity extends AppCompatActivity {
                 Intent intent;
                 if(iscompany)
                 {
-                    ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/adress");
-                    ref.setValue(AdressET.getText().toString());
-                    ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
-                    ref.setValue("yes");
-
-                    intent = new Intent(FirstLoginActivity.this,CompanyMenuActivity.class);
-                    startActivity(intent);
-                    finish();
+                    y = AdressET.getText().toString();
+                    if(x.equals("") || y.equals(""))
+                        Toast.makeText(FirstLoginActivity.this,"Toate campurile sunt obligatorii",Toast.LENGTH_LONG).show();
+                    else
+                    {
+                        ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/phone");
+                        ref.setValue(x);
+                        ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/adress");
+                        ref.setValue(y);
+                        ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
+                        ref.setValue("yes");
+                        intent = new Intent(FirstLoginActivity.this,CompanyMenuActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
                 else
                 {
-                    intent = new Intent(FirstLoginActivity.this, MenuActivity.class);
-                    ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
-
-                    ref.setValue("yes");
-                    startActivity(intent);
-                    finish();
+                    if(x.equals(""))
+                        Toast.makeText(FirstLoginActivity.this, "Campul telefon este obligatoriu", Toast.LENGTH_LONG).show();
+                    else
+                    {
+                        ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/phone");
+                        ref.setValue(x);
+                        intent = new Intent(FirstLoginActivity.this, MenuActivity.class);
+                        ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
+                        ref.setValue("yes");
+                        startActivity(intent);
+                        finish();
+                    }
                 }
-
             }
         });
     }
