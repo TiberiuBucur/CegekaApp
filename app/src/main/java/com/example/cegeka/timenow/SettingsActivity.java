@@ -17,6 +17,7 @@ public class SettingsActivity extends AppCompatActivity {
         email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString());
 
         TextView nrTel = findViewById(R.id.textView3);
-        //nrTel.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString());
+
+        //nrTel.setText(FirebaseAuth.getInstance().getCurrentUser().getNrTel().toString());
     }
 }
