@@ -20,7 +20,8 @@
         <activity android:name=".NotificationActivity" />
         <activity android:name=".FirstLoginActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".companyScreenActivity" />
+        <activity android:name=".CompanyMenuActivity" />
+        <activity android:name=".ProfileCompanyActivity"></activity>
         <activity android:name=".SettingsActivity"/>
     </application>
 

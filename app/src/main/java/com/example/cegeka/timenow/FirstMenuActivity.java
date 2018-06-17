@@ -1,19 +1,13 @@
 package com.example.cegeka.timenow;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,8 +16,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Field;
-import java.sql.Ref;
 import java.util.Arrays;
 import java.util.List;
 
@@ -48,21 +40,19 @@ public class FirstMenuActivity extends AppCompatActivity {
            DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid());
            ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
-
                @Override
                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        mBut.setEnabled(true);
                    if (dataSnapshot.child("firstTime").getValue(String.class) == null)
                        startActivity(new Intent(FirstMenuActivity.this, FirstLoginActivity.class));
 
                    else
                    {
-
-                       startActivity(new Intent(FirstMenuActivity.this,companyScreenActivity.class));
-
-                       //startActivity(new Intent(FirstMenuActivity.this, MenuActivity.class));
+                       if(dataSnapshot.child("type").getValue(boolean.class))
+                           startActivity(new Intent(FirstMenuActivity.this,CompanyMenuActivity.class));
+                       else
+                           startActivity(new Intent(FirstMenuActivity.this, MenuActivity.class));
                    }
-
+                   mBut.setEnabled(true);
                }
 
                @Override
@@ -80,19 +70,23 @@ public class FirstMenuActivity extends AppCompatActivity {
 
             if (requestCode == RC_SIGN_IN && resultCode == RESULT_OK) {
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-mBut.setEnabled(false);
+                    mBut.setEnabled(false);
                     FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
                     DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+user.getUid());
 
                     ref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-mBut.setEnabled(true);
                             if(dataSnapshot.child("firstTime").getValue(String.class)==null)
                                 startActivity(new Intent(FirstMenuActivity.this, FirstLoginActivity.class));
-
                             else
-                                startActivity(new Intent(FirstMenuActivity.this, MenuActivity.class));
+                            {
+                                if(dataSnapshot.child("type").getValue(boolean.class))
+                                    startActivity(new Intent(FirstMenuActivity.this,CompanyMenuActivity.class));
+                                else
+                                    startActivity(new Intent(FirstMenuActivity.this, MenuActivity.class));
+                            }
+                            mBut.setEnabled(true);
                         }
 
                         @Override
