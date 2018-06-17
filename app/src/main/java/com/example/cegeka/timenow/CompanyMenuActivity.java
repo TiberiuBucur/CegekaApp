@@ -26,6 +26,6 @@ public class CompanyMenuActivity extends AppCompatActivity {
     }
 
     public void SettingsAct(View view) {
-        startActivity(new Intent(companyScreenActivity.this,SettingsActivity.class));
+        startActivity(new Intent(CompanyMenuActivity.this,SettingsActivity.class));
     }
 }
