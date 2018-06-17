@@ -52,10 +52,6 @@ public class SearchActivity extends AppCompatActivity {
 
                     }
                 }
-                for(Company a : arraylist)
-                {
-                    Toast.makeText(SearchActivity.this, a.ID + " " + a.Name,1).show();
-                }
                 adapter = new CustomAdapter(SearchActivity.this, arraylist);
                 editsearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 

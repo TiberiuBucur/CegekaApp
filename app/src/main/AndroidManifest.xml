@@ -21,8 +21,9 @@
         <activity android:name=".FirstLoginActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".CompanyMenuActivity" />
-        <activity android:name=".ProfileCompanyActivity"></activity>
-        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".ProfileCompanyActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".NewReservationActivity"></activity>
     </application>
 
 </manifest>

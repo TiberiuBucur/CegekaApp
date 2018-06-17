@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -15,7 +17,8 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfileCompanyActivity extends AppCompatActivity {
 
     TextView PhoneTv, AdressTv, NameTv;
-
+    Button ReserveBtn;
+    String ID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +26,10 @@ public class ProfileCompanyActivity extends AppCompatActivity {
         PhoneTv = (TextView) findViewById(R.id.PhoneTV);
         AdressTv = (TextView) findViewById(R.id.AdressTV);
         NameTv = (TextView) findViewById(R.id.CmpNameTV);
+        ReserveBtn = (Button) findViewById(R.id.ReservationBtn);
         Intent intent = getIntent();
-        String ID = intent.getStringExtra("ID_COMPANIE");
+        ID = intent.getStringExtra("ID_COMPANIE");
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+ID);
-
-
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -36,9 +38,6 @@ public class ProfileCompanyActivity extends AppCompatActivity {
                 PhoneTv.setText(dataSnapshot.child("phone").getValue(String.class));
                 AdressTv.setText(dataSnapshot.child("adress").getValue(String.class));
 
-
-
-
             }
 
             @Override
@@ -46,10 +45,12 @@ public class ProfileCompanyActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
+    }
+    public void goToReservation(View view)
+    {
+        Intent intent = new Intent(ProfileCompanyActivity.this, NewReservationActivity.class);
+        intent.putExtra("ID_COMPANY",ID);
+        startActivity(intent);
+        finish();
     }
 }
