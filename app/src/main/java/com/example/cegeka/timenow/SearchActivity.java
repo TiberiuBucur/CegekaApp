@@ -43,7 +43,6 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-
                 for( DataSnapshot kido : dataSnapshot.getChildren())
                 {
                     if(kido.child("type").getValue(boolean.class))
@@ -53,31 +52,33 @@ public class SearchActivity extends AppCompatActivity {
 
                     }
                 }
+                for(Company a : arraylist)
+                {
+                    Toast.makeText(SearchActivity.this, a.ID + " " + a.Name,1).show();
+                }
+                adapter = new CustomAdapter(SearchActivity.this, arraylist);
+                editsearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        String text = newText;
+                        adapter.filter(text);
+                        return false;
+                    }
+                });
+                CmpLv.setAdapter(adapter);
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
-
-
-
-        adapter = new CustomAdapter(this, arraylist);
-        editsearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                String text = newText;
-                adapter.filter(text);
-                return false;
-            }
-        });
-        CmpLv.setAdapter(adapter);
 
     }
     public class CustomAdapter extends BaseAdapter{
