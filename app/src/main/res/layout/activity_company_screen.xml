@@ -10,27 +10,35 @@
         android:id="@+id/textView"
         android:layout_width="fill_parent"
         android:layout_height="61dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
         android:text="Company Name"
-        android:textSize="60px"
+        android:textSize="80px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonRez"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
         android:text="Reservations"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/buttonSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:text="Settings"
+        android:onClick="SettingsAct"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
