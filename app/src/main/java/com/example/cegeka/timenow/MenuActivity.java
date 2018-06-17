@@ -24,7 +24,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-      /*  mUserTV=findViewById(R.id.UserTV);
+        mUserTV=findViewById(R.id.UserTV);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         updateUI(user);
         SearchBtn = (Button) findViewById(R.id.SearchBtn);
@@ -36,26 +36,26 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
                 BellBtn.setImageResource(R.drawable.bell2);
             }
-        });
+        });*/
         SearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, SearchActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
     }
      private void updateUI(FirebaseUser user)
     {
-      //  if(user!=null)
-  //      mUserTV.setText(user.getDisplayName());
+        if(user!=null)
+            mUserTV.setText(user.getDisplayName());
     }
 
     public void SignOff(View view)
     {
         setResult(RESULT_OK);
-      FirebaseAuth.getInstance().signOut();
-       finish();
+        FirebaseAuth.getInstance().signOut();
+        finish();
     }
 
 }
