@@ -6,6 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/esketit4"
+        android:scaleType="centerCrop"/>
+
     <Button
         android:id="@+id/CmpBtn"
         android:layout_width="match_parent"
@@ -17,4 +23,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

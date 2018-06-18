@@ -7,6 +7,12 @@
     tools:context="com.example.cegeka.timenow.NewReservationActivity"
     tools:ignore="ExtraText">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/esketit5"
+        android:scaleType="centerCrop"/>
+
     <EditText
         android:id="@+id/HourET"
         android:layout_width="wrap_content"
@@ -17,13 +23,14 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/hour_message"
-        android:inputType="time"
+        android:inputType="textPersonName"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DateET"
-        app:layout_constraintVertical_bias="0.172" />
+        app:layout_constraintTop_toBottomOf="@+id/CompanyResTv"
+        app:layout_constraintVertical_bias="0.192" />
 
     <TextView
         android:id="@+id/CompanyResTv"
@@ -33,7 +40,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:textColor="@android:color/holo_blue_bright"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -45,19 +54,20 @@
         android:id="@+id/PersonNoET"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="156dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/person_no"
-        android:inputType="number"
+        android:inputType="textPersonName"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/HourET"
-        app:layout_constraintVertical_bias="0.85" />
+        app:layout_constraintVertical_bias="0.216" />
 
     <EditText
         android:id="@+id/DateET"
@@ -67,8 +77,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="@string/day_message"
+        android:hint="Introduceti ziua rezervarii:"
         android:inputType="date"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,9 +93,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="#3232a3"
         android:onClick="Send"
         android:text="Trimite rezervarea"
         android:textAllCaps="false"
+        android:textColor="@android:color/holo_blue_bright"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

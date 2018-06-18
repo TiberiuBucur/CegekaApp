@@ -6,20 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".FirstMenuActivity">
 
-    <ImageView
-        android:id="@+id/Fundal"
-        android:layout_width="368dp"
-        android:layout_height="495dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/esketit" />
+   <ImageView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:src="@drawable/esketit"
+       android:scaleType="centerCrop"/>
 
     <Button
         android:id="@+id/SignInBtn"
@@ -41,6 +32,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.61" />
-
 
 </android.support.constraint.ConstraintLayout>

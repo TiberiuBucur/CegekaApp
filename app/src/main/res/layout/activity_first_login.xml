@@ -10,8 +10,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/esketit2" />
+        android:src="@drawable/esketit2"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/FirstConfigTV"
@@ -22,7 +22,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Prima configurare"
-        android:textColor="@android:color/holo_blue_bright"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,27 +33,23 @@
 
     <RadioButton
         android:id="@+id/TypeBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="135dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="175dp"
         android:checked="false"
         android:duplicateParentState="false"
         android:layoutDirection="rtl"
-        android:text="Este acest cont unul pentru firma?"
+        android:text="Este un cont de firma?"
         android:textAlignment="textStart"
-        android:textColor="@color/HintColor"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/PhoneET"
@@ -64,26 +60,26 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Numar de telefon"
-        android:inputType="phone"
+        android:hint="Numar de telefon:"
+        android:inputType="textPersonName"
         android:singleLine="false"
         android:textAlignment="viewStart"
         android:textColor="@android:color/holo_blue_light"
-        android:textColorHint="@color/HintColor"
+        android:textColorHint="@color/colorPrimaryDark"
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TypeBtn"
-        app:layout_constraintVertical_bias="0.124" />
+        app:layout_constraintVertical_bias="0.123" />
 
     <Button
         android:id="@+id/SubmitBtn"
         android:layout_width="wrap_content"
         android:layout_height="41dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="56dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="#3232a3"
@@ -104,16 +100,16 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Introduceti adresa"
-        android:textColorHint="@color/HintColor"
+        android:hint="Introduceti adresa:"
         android:inputType="textPersonName"
         android:textColor="@color/HintColor"
+        android:textColorHint="@color/colorPrimaryDark"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/SubmitBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PhoneET"
-        app:layout_constraintVertical_bias="0.389" />
+        app:layout_constraintVertical_bias="0.349" />
 
 </android.support.constraint.ConstraintLayout>
