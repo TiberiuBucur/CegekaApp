@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Date;
+import java.util.Random;
 
 public class ReservationConfirm extends AppCompatActivity {
 
@@ -61,7 +62,11 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
         Message = "Compania " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName() + " a acceptat rezervarea dumneavoastra de pe" +
                 String.valueOf(d.getDay()) + "." +
                 String.valueOf(d.getMonth()) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) + ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + "persoana/e.";
+
+        FirebaseDatabase.getInstance().getReference("users").child(idu).child("notifications").child(String.valueOf(System.currentTimeMillis())).setValue(Message);
+
         setResult(RESULT_OK);
+    finish();
     }
 
 
@@ -73,6 +78,9 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
         Message = "Compania " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName() + " nu a acceptat rezervarea dumneavoastra de pe"+
                 String.valueOf(d.getDay()) + "." +
                 String.valueOf(d.getMonth()) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) + ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + "persoana/e.";
+        FirebaseDatabase.getInstance().getReference("users").child(idu).child("notifications").child(String.valueOf(System.currentTimeMillis())).setValue(Message);
+
         setResult(RESULT_OK);
+finish();
     }
 }
