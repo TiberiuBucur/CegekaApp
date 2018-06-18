@@ -21,7 +21,8 @@ public class ReservationConfirm extends AppCompatActivity {
 
     TextView MessageTV;
     Button YesBtn, NoBtn;
-    String id,idu,nume,pers;
+    String id,idu,nume;
+    int pers;
     Date d;
 
 
@@ -33,20 +34,19 @@ public class ReservationConfirm extends AppCompatActivity {
         YesBtn = (Button) findViewById(R.id.YesBtn);
         NoBtn = (Button) findViewById(R.id.NoBtn);
         Intent intent= getIntent();
-        intent.getStringExtra("ID");
+        id = intent.getStringExtra("ID");
 
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reservations").child(id);
 ref.addListenerForSingleValueEvent(new ValueEventListener() {
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-         d=dataSnapshot.child("data").getValue(Date.class);
-        idu=dataSnapshot.child("id").getValue(String.class);
-        nume=dataSnapshot.child("nume").getValue(String.class);
-        pers=dataSnapshot.child("pers").getValue(String.class);
-
-
-
-
+         d = dataSnapshot.child("data").getValue(Date.class);
+        idu = dataSnapshot.child("id").getValue(String.class);
+        nume = dataSnapshot.child("nume").getValue(String.class);
+        pers = dataSnapshot.child("pers").getValue(Integer.class);
+        MessageTV.setText("Ati primit o rezervare de la " + nume + " pe data de " + String.valueOf(d.getDay()) + "." +
+                String.valueOf(d.getMonth()) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) +
+        ":" + String.valueOf(d.getMinutes()) + " pentru " + pers + "persoana/e.");
     }
 
     @Override
@@ -58,9 +58,6 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
     }
     public void Yes(View view)
     {
-
-
-
 
         setResult(RESULT_OK);
     }

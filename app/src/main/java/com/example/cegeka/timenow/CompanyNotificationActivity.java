@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class CompanyNotificationActivity extends AppCompatActivity {
 
-    ListView NoteLv = (ListView) findViewById(R.id.NotificationLV);
+    ListView NoteLv;
     ArrayList<String> arrayliststr = new ArrayList<>();
     ArrayList<String> arraylistid = new ArrayList<>();
     CustomAdapter adapter;
@@ -63,6 +63,7 @@ public class CompanyNotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_notification);
+        NoteLv = (ListView) findViewById(R.id.NotificationLV);
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reservations");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -121,10 +122,10 @@ public class CompanyNotificationActivity extends AppCompatActivity {
             if(view == null)
             {
                 LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                view = inflater.inflate(R.layout.note_msg, null);
+                view = inflater.inflate(R.layout.company_button, null);
             }
             Button ReservationBtn = (Button) view.findViewById(R.id.CmpBtn);
-            ReservationBtn.setText("Rezervare de la "+arrayList.get(position));
+            ReservationBtn.setText("Rezervare de la "+ arrayList.get(position));
             ReservationBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -134,7 +135,6 @@ public class CompanyNotificationActivity extends AppCompatActivity {
                     startActivityForResult(intent, 13);
                 }
             });
-
             return view;
         }
     }

@@ -81,7 +81,7 @@ public class NewReservationActivity extends AppCompatActivity {
 
                 ref.child("nume").setValue(user.getDisplayName());
                 ref.child("id").setValue(user.getUid());
-                ref.child("pers").setValue(PersonEt.getText().toString());
+                ref.child("pers").setValue(Integer.parseInt(PersonEt.getText().toString()));
                 ref.child("data").setValue(d);
 
                 finish();

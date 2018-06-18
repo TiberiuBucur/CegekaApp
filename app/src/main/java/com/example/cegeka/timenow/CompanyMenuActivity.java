@@ -18,7 +18,10 @@ public class CompanyMenuActivity extends AppCompatActivity {
         TextView textComp = (TextView)findViewById(R.id.textView);
         textComp.setText("Hello " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
     }
-
+    public void goToNotification(View view)
+    {
+        startActivity(new Intent(CompanyMenuActivity.this, CompanyNotificationActivity.class));
+    }
     public void SettingsAct(View view) {
         startActivity(new Intent(CompanyMenuActivity.this,SettingsActivity.class));
     }
