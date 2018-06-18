@@ -69,17 +69,16 @@ public class NewReservationActivity extends AppCompatActivity {
 
             SimpleDateFormat sdf=new SimpleDateFormat("h:mm dd.MM.yyyy");
             try {
+                FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
               Date d= sdf.parse(x);
                 DatabaseReference ref= FirebaseDatabase.getInstance().getReference("users").child(ID).child("reservations");
                 Random r=new Random();
-                for (int i=1;i<10000000;i++);
+                for (int i=1;i<90000000;i++);
                 Random m=new Random(System.currentTimeMillis()+  r.nextInt());
-                for (int i=1;i<10000000;i++);
-                Random s=new Random(System.currentTimeMillis()+m.nextInt());
-                String seed=String.valueOf(System.currentTimeMillis())+ String.valueOf(r.nextLong())+ String.valueOf(m.nextLong())+ String.valueOf(s.nextLong());
+                String seed=String.valueOf(System.currentTimeMillis())+String.valueOf(user.getUid())+String.valueOf(m.nextLong());
 
                 ref =ref.child(seed);
-               FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+
                 ref.child("nume").setValue(user.getDisplayName());
                 ref.child("id").setValue(user.getUid());
                 ref.child("pers").setValue(PersonEt.getText().toString());
