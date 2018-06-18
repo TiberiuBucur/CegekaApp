@@ -55,6 +55,7 @@ public class NewReservationActivity extends AppCompatActivity {
     }
     public void Send(View view)
     {
+        MakeResBtn.setEnabled(false);
         String day = DateEt.getText().toString();
         String hour = HourEt.getText().toString();
         String nr_pers_string = PersonEt.getText().toString();
@@ -75,7 +76,7 @@ public class NewReservationActivity extends AppCompatActivity {
                 Random m=new Random(System.currentTimeMillis()+  r.nextInt());
                 for (int i=1;i<10000000;i++);
                 Random s=new Random(System.currentTimeMillis()+m.nextInt());
-                String seed= String.valueOf(r.nextLong())+ String.valueOf(m.nextLong())+ String.valueOf(s.nextLong());
+                String seed=String.valueOf(System.currentTimeMillis())+ String.valueOf(r.nextLong())+ String.valueOf(m.nextLong())+ String.valueOf(s.nextLong());
 
                 ref =ref.child(seed);
                FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
@@ -84,14 +85,14 @@ public class NewReservationActivity extends AppCompatActivity {
                 ref.child("pers").setValue(PersonEt.getText().toString());
                 ref.child("data").setValue(d);
 
-
+                finish();
 
             } catch (ParseException e) {
                 Toast.makeText(NewReservationActivity.this,"Incorrect format",1).show();
                 }
-
+                MakeResBtn.setEnabled(true);
             //functie de trimis rezervarea, cu campurile de data, ora nrpersoane, Id companie si Id client
-            finish();
+
         }
     }
 }
