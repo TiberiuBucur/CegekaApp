@@ -26,7 +26,7 @@
         <activity android:name=".NewReservationActivity" />
         <activity android:name=".CompanyNotificationActivity" />
         <activity android:name=".ReservationConfirm" />
-        <activity android:name=".FavoritesAcitivty"></activity>
+        <activity android:name=".FavoritesActivity"></activity>
     </application>
 
 </manifest>
