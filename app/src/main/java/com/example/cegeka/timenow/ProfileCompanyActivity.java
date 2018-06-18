@@ -27,6 +27,7 @@ public class ProfileCompanyActivity extends AppCompatActivity {
         AdressTv = (TextView) findViewById(R.id.AdressTV);
         NameTv = (TextView) findViewById(R.id.CmpNameTV);
         ReserveBtn = (Button) findViewById(R.id.ReservationBtn);
+        ReserveBtn.setEnabled(false);
         Intent intent = getIntent();
         ID = intent.getStringExtra("ID_COMPANIE");
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+ID);
@@ -37,7 +38,7 @@ public class ProfileCompanyActivity extends AppCompatActivity {
                NameTv.setText(dataSnapshot.child("name").getValue(String.class));
                 PhoneTv.setText(dataSnapshot.child("phone").getValue(String.class));
                 AdressTv.setText(dataSnapshot.child("adress").getValue(String.class));
-
+               ReserveBtn.setEnabled(true);
             }
 
             @Override
@@ -50,6 +51,7 @@ public class ProfileCompanyActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(ProfileCompanyActivity.this, NewReservationActivity.class);
         intent.putExtra("ID_COMPANY",ID);
+        intent.putExtra("NAME_COMPANY",NameTv.getText().toString());
         startActivity(intent);
         finish();
     }
