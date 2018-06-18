@@ -61,6 +61,9 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
         Message = "Compania " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName() + " a acceptat rezervarea dumneavoastra de pe" +
                 String.valueOf(d.getDay()) + "." +
                 String.valueOf(d.getMonth()) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) + ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + " persoana/e.";
+
+        FirebaseDatabase.getInstance().getReference("users").child(idu).child("notifications").child(String.valueOf(System.currentTimeMillis())).setValue(Message);
+
         setResult(RESULT_OK);
     }
 
@@ -72,7 +75,9 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
         FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reservations").child(id).removeValue();
         Message = "Compania " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName() + " nu a acceptat rezervarea dumneavoastra de pe"+
                 String.valueOf(d.getDay()) + "." +
-                String.valueOf(d.getMonth()) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) + ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + " persoana/e.";
+                String.valueOf(d.getMonth()) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) + ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + "persoana/e.";
+        FirebaseDatabase.getInstance().getReference("users").child(idu).child("notifications").child(String.valueOf(System.currentTimeMillis())).setValue(Message);
+
         setResult(RESULT_OK);
     }
 }
