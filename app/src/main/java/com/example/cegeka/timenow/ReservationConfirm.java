@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -64,7 +65,7 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 String.valueOf(d.getMonth()) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) + ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + "persoana/e.";
 
         FirebaseDatabase.getInstance().getReference("users").child(idu).child("notifications").child(String.valueOf(System.currentTimeMillis())).setValue(Message);
-
+        Toast.makeText(getApplicationContext(),idu,1).show();
         setResult(RESULT_OK);
     finish();
     }
