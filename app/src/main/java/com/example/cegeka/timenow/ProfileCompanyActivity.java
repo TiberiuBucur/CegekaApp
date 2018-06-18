@@ -81,9 +81,7 @@ public void Rate(View view)
 
                 dataSnapshot.child("rate").getRef().setValue(rating/nratings);
 
-
             }
-
 
         }
 

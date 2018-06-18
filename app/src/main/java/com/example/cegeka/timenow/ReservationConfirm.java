@@ -24,7 +24,7 @@ public class ReservationConfirm extends AppCompatActivity {
     String id,idu,nume;
     int pers;
     Date d;
-
+    String Message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,6 @@ public class ReservationConfirm extends AppCompatActivity {
         NoBtn = (Button) findViewById(R.id.NoBtn);
         Intent intent= getIntent();
         id = intent.getStringExtra("ID");
-
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reservations").child(id);
 ref.addListenerForSingleValueEvent(new ValueEventListener() {
     @Override
@@ -59,7 +58,9 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
     public void Yes(View view)
     {
         FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reservations").child(id).child("yes").setValue(true);
-
+        Message = "Compania " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName() + " a acceptat rezervarea dumneavoastra de pe" +
+                String.valueOf(d.getDay()) + "." +
+                String.valueOf(d.getMonth()) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) + ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + "persoana/e.";
         setResult(RESULT_OK);
     }
 
@@ -69,6 +70,9 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
     public void No(View view)
     {
         FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reservations").child(id).removeValue();
+        Message = "Compania " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName() + " nu a acceptat rezervarea dumneavoastra de pe"+
+                String.valueOf(d.getDay()) + "." +
+                String.valueOf(d.getMonth()) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) + ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + "persoana/e.";
         setResult(RESULT_OK);
     }
 }
