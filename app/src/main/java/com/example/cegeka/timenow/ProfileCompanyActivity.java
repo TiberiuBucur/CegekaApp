@@ -46,6 +46,8 @@ public class ProfileCompanyActivity extends AppCompatActivity {
                 if(dataSnapshot.child("rating").child("rate").getValue(float.class)!=null)
                 rtb.setRating(dataSnapshot.child("rating").child("rate").getValue(float.class));
                 ReserveBtn.setEnabled(true);
+
+
             }
 
             @Override
@@ -97,5 +99,16 @@ public void Rate(View view)
 
 }
 
+
+public void Favourite(View view)
+{
+    DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users").child(ID).child("favorite").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+    ref.setValue(true);
+}
+    public void Scoate(View view)
+    {
+        DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users").child(ID).child("favorite").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        ref.removeValue();
+    }
 
 }
