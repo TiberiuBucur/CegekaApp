@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CompanyNotificationActivity extends AppCompatActivity {
@@ -38,7 +39,7 @@ public class CompanyNotificationActivity extends AppCompatActivity {
     public class CustomAdapter extends BaseAdapter
     {
         Context mContext;
-        static List<Button> List = new ArrayList<>();
+        ArrayList<Button> List = new ArrayList<>();
         ArrayList<String> arrayList = new ArrayList<>();
         public CustomAdapter(Context context, ArrayList<String> List)
         {
