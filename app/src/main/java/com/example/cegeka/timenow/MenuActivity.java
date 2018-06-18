@@ -3,6 +3,7 @@ package com.example.cegeka.timenow;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,6 +57,11 @@ public class MenuActivity extends AppCompatActivity {
         setResult(RESULT_OK);
         FirebaseAuth.getInstance().signOut();
         finish();
+    }
+    public void goToSettings(View view)
+    {
+        Intent intent = new Intent(MenuActivity.this, SettingsActivity.class);
+        startActivity(intent);
     }
 
 }
