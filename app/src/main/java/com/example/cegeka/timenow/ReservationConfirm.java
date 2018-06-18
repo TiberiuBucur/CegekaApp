@@ -58,6 +58,7 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
     }
     public void Yes(View view)
     {
+        FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reservations").child(id).child("yes").setValue(true);
 
         setResult(RESULT_OK);
     }
@@ -67,6 +68,7 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
     public void No(View view)
     {
+        FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reservations").child(id).removeValue();
         setResult(RESULT_OK);
     }
 }

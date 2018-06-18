@@ -75,6 +75,13 @@ public class CompanyNotificationActivity extends AppCompatActivity {
                         arrayliststr.add(ds.child("nume").getValue(String.class));
                         arraylistid.add(ds.getKey());
                     }
+                    else if(!ds.child("yes").getValue(boolean.class))
+                    {
+                        ds.getRef().removeValue();
+
+                    }
+
+
                 }
 
                 adapter = new CustomAdapter(CompanyNotificationActivity.this, arrayliststr);
