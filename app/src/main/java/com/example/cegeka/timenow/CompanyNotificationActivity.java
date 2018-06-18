@@ -18,12 +18,16 @@ import java.util.ArrayList;
 public class CompanyNotificationActivity extends AppCompatActivity {
 
     ListView NoteLv = (ListView) findViewById(R.id.NotificationLV);
-
+    ArrayList<String> arraylist = new ArrayList<>();
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 13 && resultCode == RESULT_OK)
         {
+
+
+
+
 
         }
     }
@@ -32,7 +36,7 @@ public class CompanyNotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_notification);
-        ArrayList<String> arraylist = new ArrayList<>();
+
         CustomAdapter adapter = new CustomAdapter(CompanyNotificationActivity.this, arraylist);
         NoteLv.setAdapter(adapter);
     }
