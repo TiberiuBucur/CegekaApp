@@ -46,7 +46,7 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
         pers = dataSnapshot.child("pers").getValue(Integer.class);
         MessageTV.setText("Ati primit o rezervare de la " + nume + " pe data de " + String.valueOf(d.getDay()) + "." +
                 String.valueOf(d.getMonth()) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) +
-        ":" + String.valueOf(d.getMinutes()) + " pentru " + pers + "persoana/e.");
+        ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + "persoana/e.");
     }
 
     @Override
