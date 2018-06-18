@@ -24,7 +24,7 @@ import java.util.List;
 
 public class NotificationActivity extends AppCompatActivity {
 
-    ListView NoteLv = (ListView) findViewById(R.id.NotificationLV);
+    ListView NoteLv;
     Button deleteBtn;
     ArrayList<String> arrayliststr = new ArrayList<>();
     ArrayList<String> arraylistpos = new ArrayList<>();
@@ -35,15 +35,15 @@ public class NotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
         deleteBtn = (Button) findViewById(R.id.DeleteBtn2);
-
+        NoteLv = (ListView) findViewById(R.id.NotificationLV);
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("notifications");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds:dataSnapshot.getChildren())
-                {
-                      arrayliststr.add(ds.getValue(String.class));
-                      arraylistpos.add(ds.getKey());
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    arrayliststr.add(ds.getValue(String.class));
+                    arraylistpos.add(ds.getKey());
                 }
                 adapter = new CustomAdapter(NotificationActivity.this, arrayliststr);
                 NoteLv.setAdapter(adapter);

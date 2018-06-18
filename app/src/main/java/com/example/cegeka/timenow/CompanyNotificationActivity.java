@@ -44,7 +44,6 @@ public class CompanyNotificationActivity extends AppCompatActivity {
                             arrayliststr.add(ds.child("nume").getValue(String.class));
                             arraylistid.add(ds.getKey());
 
-
                         }
                     }
 
@@ -87,8 +86,6 @@ public class CompanyNotificationActivity extends AppCompatActivity {
                 adapter = new CustomAdapter(CompanyNotificationActivity.this, arrayliststr);
                 NoteLv.setAdapter(adapter);
 
-
-
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -96,7 +93,6 @@ public class CompanyNotificationActivity extends AppCompatActivity {
             }
         });
     }
-
 
     public class CustomAdapter extends BaseAdapter
     {

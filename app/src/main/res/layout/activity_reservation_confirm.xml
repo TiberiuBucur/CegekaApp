@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.cegeka.timenow.ReservationConfirm">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/esketit4"
+        android:scaleType="centerCrop"/>
+
     <TextView
         android:id="@+id/MessageTv"
         android:layout_width="match_parent"
