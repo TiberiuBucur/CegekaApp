@@ -47,7 +47,7 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 String.valueOf(d.getMonth()) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) +
         ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + " persoana/e.");
     }
-
+//comm
     @Override
     public void onCancelled(@NonNull DatabaseError databaseError) {
 
