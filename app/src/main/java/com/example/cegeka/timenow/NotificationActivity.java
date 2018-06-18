@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
@@ -20,13 +19,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationActivity extends AppCompatActivity {
 
-    ListView NoteLv = (ListView) findViewById(R.id.NoteListView);
+    ListView NoteLv = (ListView) findViewById(R.id.NotificationLV);
     Button deleteBtn;
     ArrayList<String> arrayliststr = new ArrayList<>();
     ArrayList<String> arraylistpos = new ArrayList<>();
@@ -36,7 +34,7 @@ public class NotificationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
-        deleteBtn = (Button) findViewById(R.id.DeleteBtn);
+        deleteBtn = (Button) findViewById(R.id.DeleteBtn2);
 
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("notifications");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -58,7 +56,6 @@ public class NotificationActivity extends AppCompatActivity {
                     }
                 });
 
-
             }
 
             @Override
@@ -66,9 +63,6 @@ public class NotificationActivity extends AppCompatActivity {
 
             }
         });
-
-
-
 
     }
     public class CustomAdapter extends BaseAdapter

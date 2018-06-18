@@ -23,7 +23,9 @@
         <activity android:name=".CompanyMenuActivity" />
         <activity android:name=".ProfileCompanyActivity" />
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".NewReservationActivity"></activity>
+        <activity android:name=".NewReservationActivity" />
+        <activity android:name=".CompanyNotificationActivity" />
+        <activity android:name=".ReservationConfirm"></activity>
     </application>
 
 </manifest>

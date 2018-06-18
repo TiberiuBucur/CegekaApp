@@ -2,7 +2,7 @@
     <string name="app_name">Time Now</string>
     <string name="hour_message">Ora HH:MM</string>
     <string name="person_no">Numarul de persoane</string>
-    <string name="date_message">Ziua DD:MM:YYYY</string>
+    <string name="date_message">Ziua DD.MM.YYYY</string>
     <string name="notification_delete">Sterge notificarea</string>
     <string name="notification_title">Notificari</string>
 </resources>
