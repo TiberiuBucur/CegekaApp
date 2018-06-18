@@ -87,7 +87,7 @@ public class NewReservationActivity extends AppCompatActivity {
                 finish();
 
             } catch (ParseException e) {
-                Toast.makeText(NewReservationActivity.this,"Incorrect format",1).show();
+                Toast.makeText(NewReservationActivity.this,"Format incorect \nFormatul corect este h:mm dd.MM.yyyy ",1).show();
                 }
                 MakeResBtn.setEnabled(true);
             //functie de trimis rezervarea, cu campurile de data, ora nrpersoane, Id companie si Id client
