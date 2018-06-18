@@ -99,13 +99,14 @@
         app:layout_constraintTop_toBottomOf="@+id/CmpNameTV" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/rateBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:onClick="Rate"
         android:text="Rate"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
