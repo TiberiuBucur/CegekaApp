@@ -23,6 +23,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/hour_message"
+        android:textColorHint="@color/colorPrimaryDark"
         android:inputType="textPersonName"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +31,7 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CompanyResTv"
-        app:layout_constraintVertical_bias="0.192" />
+        app:layout_constraintVertical_bias="0.289" />
 
     <TextView
         android:id="@+id/CompanyResTv"
@@ -61,13 +62,14 @@
         android:ems="10"
         android:hint="@string/person_no"
         android:inputType="textPersonName"
+        android:textColorHint="@color/colorPrimaryDark"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/HourET"
-        app:layout_constraintVertical_bias="0.216" />
+        app:layout_constraintVertical_bias="0.231" />
 
     <EditText
         android:id="@+id/DateET"
@@ -77,7 +79,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="Introduceti ziua rezervarii:"
+        android:hint="@string/date_message"
+        android:textColorHint="@color/colorPrimaryDark"
         android:inputType="date"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,7 +100,7 @@
         android:onClick="Send"
         android:text="Trimite rezervarea"
         android:textAllCaps="false"
-        android:textColor="@android:color/holo_blue_bright"
+        android:textColor="@color/HintColor"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
