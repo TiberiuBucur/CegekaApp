@@ -63,5 +63,10 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = new Intent(MenuActivity.this, SettingsActivity.class);
         startActivity(intent);
     }
+    public void goToFavorites(View view)
+    {
+        Intent intent = new Intent(MenuActivity.this, FavoritesActivity.class);
+        startActivity(intent);
+    }
 
 }

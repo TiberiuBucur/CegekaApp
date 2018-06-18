@@ -24,11 +24,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class FavoritesAcitivty extends AppCompatActivity {
+public class FavoritesActivity extends AppCompatActivity {
 
     ListView CmpLv;
     SearchView editsearch;
-    FavoritesAcitivty.CustomAdapter adapter;
+    FavoritesActivity.CustomAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +51,7 @@ public class FavoritesAcitivty extends AppCompatActivity {
 
                     }
                 }
-                adapter = new FavoritesAcitivty.CustomAdapter(FavoritesAcitivty.this, arraylist);
+                adapter = new FavoritesActivity.CustomAdapter(FavoritesActivity.this, arraylist);
                 editsearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
                     @Override
@@ -116,7 +116,7 @@ public class FavoritesAcitivty extends AppCompatActivity {
             CompBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(FavoritesAcitivty.this,ProfileCompanyActivity.class);
+                    Intent intent = new Intent(FavoritesActivity.this,ProfileCompanyActivity.class);
                     intent.putExtra("ID_COMPANIE", CmpNamesList.get(copy).ID);
                     startActivity(intent);
                 }
