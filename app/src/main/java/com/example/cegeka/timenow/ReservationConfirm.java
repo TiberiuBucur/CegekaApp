@@ -66,6 +66,7 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
         FirebaseDatabase.getInstance().getReference("users").child(idu).child("notifications").child(String.valueOf(System.currentTimeMillis())).setValue(Message);
 
         setResult(RESULT_OK);
+        finish();
     }
 
 
@@ -80,5 +81,6 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
         FirebaseDatabase.getInstance().getReference("users").child(idu).child("notifications").child(String.valueOf(System.currentTimeMillis())).setValue(Message);
 
         setResult(RESULT_OK);
+    finish();
     }
 }
