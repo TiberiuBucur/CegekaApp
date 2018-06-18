@@ -21,6 +21,7 @@ public class FirstLoginActivity extends AppCompatActivity {
     Button SubmitBtn;
     DatabaseReference ref;
     boolean alreadyCheked;
+    //commit gol
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
