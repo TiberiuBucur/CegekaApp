@@ -67,7 +67,7 @@ public class NewReservationActivity extends AppCompatActivity {
             String x;
             x=HourEt.getText().toString()+" "+DateEt.getText().toString();
 
-            SimpleDateFormat sdf=new SimpleDateFormat("h:mm dd.MM.yyyy");
+            SimpleDateFormat sdf=new SimpleDateFormat("H:mm dd.MM.yyyy");
             try {
                 FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
               Date d= sdf.parse(x);

@@ -44,8 +44,8 @@ ref.addListenerForSingleValueEvent(new ValueEventListener() {
         idu = dataSnapshot.child("id").getValue(String.class);
         nume = dataSnapshot.child("nume").getValue(String.class);
         pers = dataSnapshot.child("pers").getValue(Integer.class);
-        MessageTV.setText("Ati primit o rezervare de la " + nume + " pe data de " + String.valueOf(d.getDay()) + "." +
-                String.valueOf(d.getMonth()) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) +
+        MessageTV.setText("Ati primit o rezervare de la " + nume + " pe data de " + String.valueOf(d.getDate()) + "." +
+                String.valueOf(d.getMonth() + 1) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) +
         ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + " persoana/e.");
     }
 //comm
