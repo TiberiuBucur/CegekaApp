@@ -62,8 +62,7 @@ public class ReservationConfirm extends AppCompatActivity {
                 String.valueOf(d.getMonth() +1) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) + ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + " persoana/e.";
 
         FirebaseDatabase.getInstance().getReference("users").child(idu).child("notifications").child(String.valueOf(System.currentTimeMillis())).setValue(Message);
-
-        setResult(RESULT_OK);
+        startActivityForResult(new Intent(ReservationConfirm.this, CompanyNotificationActivity.class), 20);
         finish();
     }
 
@@ -74,7 +73,7 @@ public class ReservationConfirm extends AppCompatActivity {
                 String.valueOf(d.getDay()) + "." +
                         String.valueOf(d.getMonth() + 1) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) + ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + " persoana/e.";
         FirebaseDatabase.getInstance().getReference("users").child(idu).child("notifications").child(String.valueOf(System.currentTimeMillis())).setValue(Message);
-        setResult(RESULT_OK);
+        startActivityForResult(new Intent(ReservationConfirm.this, CompanyNotificationActivity.class), 20);
         finish();
     }
 }

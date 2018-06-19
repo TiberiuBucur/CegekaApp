@@ -30,39 +30,6 @@ public class CompanyNotificationActivity extends AppCompatActivity {
     ArrayList<String> arraylistid = new ArrayList<>();
     CustomAdapter adapter;
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 13 && resultCode == RESULT_OK)
-        {
-            DatabaseReference ref= FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reservations");
-            ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        if (ds.child("yes").getValue(boolean.class) == null) {
-
-                            arrayliststr.add(ds.child("nume").getValue(String.class));
-                            arraylistid.add(ds.getKey());
-
-                        }
-                        else
-                            if(!ds.child("yes").getValue(boolean.class))
-                                ds.getRef().removeValue();
-
-                    }
-
-                    adapter = new CustomAdapter(CompanyNotificationActivity.this, arrayliststr);
-                    NoteLv.setAdapter(adapter);
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-        }
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_notification);
@@ -135,7 +102,8 @@ public class CompanyNotificationActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(CompanyNotificationActivity.this, ReservationConfirm.class);
                     intent.putExtra("ID",arraylistid.get(position));
-                    startActivityForResult(intent, 13);
+                    startActivity(intent);
+                    finish();
                 }
             });
             return view;
