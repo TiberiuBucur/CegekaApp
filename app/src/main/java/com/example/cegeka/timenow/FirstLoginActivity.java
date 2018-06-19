@@ -63,6 +63,7 @@ public class FirstLoginActivity extends AppCompatActivity {
                 ref.setValue(iscompany);
                 ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/name");
                 ref.setValue(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+                FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
                 Intent intent;
                 if(iscompany)
                 {
@@ -97,6 +98,7 @@ public class FirstLoginActivity extends AppCompatActivity {
                         finish();
                     }
                 }
+
             }
         });
     }
