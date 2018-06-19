@@ -45,6 +45,10 @@ public class CompanyNotificationActivity extends AppCompatActivity {
                             arraylistid.add(ds.getKey());
 
                         }
+                        else
+                            if(!ds.child("yes").getValue(boolean.class))
+                                ds.getRef().removeValue();
+
                     }
 
                     adapter = new CustomAdapter(CompanyNotificationActivity.this, arrayliststr);
@@ -75,11 +79,7 @@ public class CompanyNotificationActivity extends AppCompatActivity {
                         arraylistid.add(ds.getKey());
                     }
                     else if(!ds.child("yes").getValue(boolean.class))
-                    {
                         ds.getRef().removeValue();
-
-                    }
-
 
                 }
 

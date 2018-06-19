@@ -2,6 +2,7 @@ package com.example.cegeka.timenow;
 
 import android.app.Notification;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -109,24 +110,22 @@ public class NotificationActivity extends AppCompatActivity {
 
             Notification.setOnClickListener(new View.OnClickListener() {
 
+                    @Override
+                    public void onClick(View v) {
 
-                                                @Override
-                                                public void onClick(View v) {
+                        if(arrayListState.get(position)) {
+                            Notification.setChecked(false);
+                            Notification.setCheckMarkDrawable(null);
+                           arrayListState.set(position,false);
+                        }
+                        else {
+                            Notification.setChecked(true);
+                            Notification.setCheckMarkDrawable(R.drawable.fui_done_check_mark);
+                            arrayListState.set(position,true);
+                        }
 
-                                                    if(arrayListState.get(position)) {
-                                                        Notification.setChecked(false);
-                                                        Notification.setCheckMarkDrawable(null);
-                                                       arrayListState.set(position,false);
-                                                    }
-                                                    else {
-                                                        Notification.setChecked(true);
-                                                        Notification.setCheckMarkDrawable(R.drawable.fui_done_check_mark);
-                                                        arrayListState.set(position,true);
-                                                    }
-
-                                                }
-                                            }
-                    );
+                    }
+            });
             List.add(Notification);
             return view;
         }
@@ -139,7 +138,8 @@ public class NotificationActivity extends AppCompatActivity {
                     FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("notifications").child(a.getHint().toString()).removeValue();
 
                 }
-        finish();
+            startActivity(new Intent(NotificationActivity.this, NotificationActivity.class));
+            finish();
         }
     }
 }
