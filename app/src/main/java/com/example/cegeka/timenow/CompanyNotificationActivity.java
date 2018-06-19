@@ -26,15 +26,16 @@ import java.util.ArrayList;
 public class CompanyNotificationActivity extends AppCompatActivity {
 
     ListView NoteLv;
-    ArrayList<String> arrayliststr = new ArrayList<>();
-    ArrayList<String> arraylistid = new ArrayList<>();
+    ArrayList<String> arrayliststr;
+    ArrayList<String> arraylistid;
     CustomAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_notification);
         NoteLv = (ListView) findViewById(R.id.NotificationLV);
-
+        arrayliststr = new ArrayList<>();
+        arraylistid = new ArrayList<>();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reservations");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

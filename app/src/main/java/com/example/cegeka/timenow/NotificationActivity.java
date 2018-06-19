@@ -136,7 +136,6 @@ public class NotificationActivity extends AppCompatActivity {
                 if(a.isChecked())
                 {
                     FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("notifications").child(a.getHint().toString()).removeValue();
-
                 }
             startActivity(new Intent(NotificationActivity.this, NotificationActivity.class));
             finish();
