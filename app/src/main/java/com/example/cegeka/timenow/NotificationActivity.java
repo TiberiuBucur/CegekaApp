@@ -1,5 +1,6 @@
 package com.example.cegeka.timenow;
 
+import android.app.Notification;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,7 @@ public class NotificationActivity extends AppCompatActivity {
     Button deleteBtn;
     ArrayList<String> arrayliststr = new ArrayList<>();
     ArrayList<String> arraylistpos = new ArrayList<>();
+    ArrayList<Boolean> arrayListState=new ArrayList<>();
 
     CustomAdapter adapter;
     @Override
@@ -44,6 +46,7 @@ public class NotificationActivity extends AppCompatActivity {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     arrayliststr.add(ds.getValue(String.class));
                     arraylistpos.add(ds.getKey());
+                    arrayListState.add(false);
                 }
                 adapter = new CustomAdapter(NotificationActivity.this, arrayliststr);
                 NoteLv.setAdapter(adapter);
@@ -67,6 +70,8 @@ public class NotificationActivity extends AppCompatActivity {
     }
     public class CustomAdapter extends BaseAdapter
     {
+
+        String value;
         Context mContext;
         List<CheckedTextView> List = new ArrayList<>();
         ArrayList<String> arrayList = new ArrayList<>();
@@ -91,16 +96,37 @@ public class NotificationActivity extends AppCompatActivity {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(final int position, View convertView, ViewGroup parent) {
             View view = convertView;
             if(view == null)
             {
                 LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 view = inflater.inflate(R.layout.note_msg, null);
             }
-            CheckedTextView Notification = (CheckedTextView) view.findViewById(R.id.NoteCheckedTV);
+            final CheckedTextView Notification = (CheckedTextView) view.findViewById(R.id.NoteCheckedTV);
             Notification.setHint(arraylistpos.get(position));
             Notification.setText(arrayList.get(position));
+
+            Notification.setOnClickListener(new View.OnClickListener() {
+
+
+                                                @Override
+                                                public void onClick(View v) {
+
+                                                    if(arrayListState.get(position)) {
+                                                        Notification.setChecked(false);
+                                                        Notification.setCheckMarkDrawable(null);
+                                                       arrayListState.set(position,false);
+                                                    }
+                                                    else {
+                                                        Notification.setChecked(true);
+                                                        Notification.setCheckMarkDrawable(R.drawable.fui_done_check_mark);
+                                                        arrayListState.set(position,true);
+                                                    }
+
+                                                }
+                                            }
+                    );
             List.add(Notification);
             return view;
         }
@@ -111,10 +137,9 @@ public class NotificationActivity extends AppCompatActivity {
                 if(a.isChecked())
                 {
                     FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("notifications").child(a.getHint().toString()).removeValue();
-                    arrayliststr.remove(a.getText().toString());
-                    arraylistpos.remove(a.getHint().toString());
-                    List.remove(a);
+
                 }
+        finish();
         }
     }
 }
