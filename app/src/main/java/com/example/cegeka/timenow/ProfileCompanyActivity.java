@@ -46,8 +46,6 @@ public class ProfileCompanyActivity extends AppCompatActivity {
                 if(dataSnapshot.child("rating").child("rate").getValue(float.class)!=null)
                 rtb.setRating(dataSnapshot.child("rating").child("rate").getValue(float.class));
                 ReserveBtn.setEnabled(true);
-
-
             }
 
             @Override
@@ -65,44 +63,38 @@ public class ProfileCompanyActivity extends AppCompatActivity {
         finish();
     }
 
-public void Rate(View view)
-{
-    DatabaseReference ref= FirebaseDatabase.getInstance().getReference("users").child(ID).child("rating");
-    ref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(rtb.getRating());
-    ref.addListenerForSingleValueEvent(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+    public void Rate(View view)
+    {
+        DatabaseReference ref= FirebaseDatabase.getInstance().getReference("users").child(ID).child("rating");
+        ref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(rtb.getRating());
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-            float rating=3*10;
-            int nratings=10;
-            for(DataSnapshot ds:dataSnapshot.getChildren())
-            {if(ds.getKey()!="rate") {
-                rating += ds.getValue(float.class);
-                nratings++;
+                float rating=3*10;
+                int nratings=10;
+                for(DataSnapshot ds:dataSnapshot.getChildren())
+                {if(ds.getKey()!="rate") {
+                    rating += ds.getValue(float.class);
+                    nratings++;
+                    }
+
+                    dataSnapshot.child("rate").getRef().setValue(rating/nratings);
                 }
-
-                dataSnapshot.child("rate").getRef().setValue(rating/nratings);
-
             }
 
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
 
-        }
-    });
-
-
-
-}
-
-
-public void Favourite(View view)
-{
-    DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users").child(ID).child("favorite").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-    ref.setValue(true);
-}
+    public void Favourite(View view)
+    {
+        DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users").child(ID).child("favorite").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        ref.setValue(true);
+    }
     public void Scoate(View view)
     {
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users").child(ID).child("favorite").child(FirebaseAuth.getInstance().getCurrentUser().getUid());

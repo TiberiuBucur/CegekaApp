@@ -2,7 +2,6 @@ package com.example.cegeka.timenow;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.ResultReceiver;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,9 +11,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.common.api.Api;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +19,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -32,7 +28,7 @@ public class DateReservationActivity extends AppCompatActivity {
 
     TextView dateTV;
     ListView ReservationsLV;
-    ArrayList<Reservation> arraylist;
+    ArrayList<Reservation> arrayList;
     int day, month, year;
     final String[] months = {"Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie",
             "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"};
@@ -48,7 +44,7 @@ public class DateReservationActivity extends AppCompatActivity {
         String date = String.valueOf(day) + " " + months[month] + " " + String.valueOf(year);
         dateTV.setText(date);
         ReservationsLV = (ListView) findViewById(R.id.DayReservationsLV);
-        arraylist = new ArrayList<>();
+        arrayList = new ArrayList<>();
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reservations");
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -64,12 +60,13 @@ public class DateReservationActivity extends AppCompatActivity {
                          r.client = ds.child("nume").getValue(String.class);
                          r.nr_pers = ds.child("pers").getValue(int.class);
                          r.start_time=d.getMinutes()+d.getHours()*60;
-                         arraylist.add(r);
+                         arrayList.add(r);
                      }
 
                  }
                  }
-                CustomAdapter adapter = new CustomAdapter(DateReservationActivity.this, arraylist);
+                CustomAdapter adapter = new CustomAdapter(DateReservationActivity.this, arrayList);
+                adapter.Sort();
                 ReservationsLV.setAdapter(adapter);
 
             }
