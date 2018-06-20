@@ -48,7 +48,6 @@ public class FavoritesActivity extends AppCompatActivity {
                     {
                         Company c=new Company(kido.child("name").getValue(String.class),kido.getKey());
                         arraylist.add(c);
-
                     }
                 }
                 adapter = new FavoritesActivity.CustomAdapter(FavoritesActivity.this, arraylist);

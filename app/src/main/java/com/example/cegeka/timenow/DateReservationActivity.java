@@ -3,6 +3,7 @@ package com.example.cegeka.timenow;
 import android.content.Context;
 import android.content.Intent;
 import android.os.ResultReceiver;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,13 +12,21 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.api.Api;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 
 public class DateReservationActivity extends AppCompatActivity {
 
@@ -40,8 +49,38 @@ public class DateReservationActivity extends AppCompatActivity {
         dateTV.setText(date);
         ReservationsLV = (ListView) findViewById(R.id.DayReservationsLV);
         arraylist = new ArrayList<>();
-        CustomAdapter adapter = new CustomAdapter(DateReservationActivity.this, arraylist);
-        ReservationsLV.setAdapter(adapter);
+        DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reservations");
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+              for (DataSnapshot ds:dataSnapshot.getChildren())
+              {
+                 if(ds.child("yes").getValue(Boolean.class)!=null)
+                     if(ds.child("yes").getValue(Boolean.class)==true) {
+                     Date d = ds.child("data").getValue(Date.class);
+
+                     if (d.getDate() == day && d.getMonth() == month && d.getYear()+1900 == year) {
+                         Reservation r = new Reservation();
+                         r.client = ds.child("nume").getValue(String.class);
+                         r.nr_pers = ds.child("pers").getValue(int.class);
+                         r.start_time=d.getMinutes()+d.getHours()*60;
+                         arraylist.add(r);
+                     }
+
+                 }
+                 }
+                CustomAdapter adapter = new CustomAdapter(DateReservationActivity.this, arraylist);
+                ReservationsLV.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
     public class CustomAdapter extends BaseAdapter
     {
