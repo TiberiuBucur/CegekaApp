@@ -43,7 +43,10 @@ public class CompanyMenuActivity extends AppCompatActivity {
             }
         });
     }
-
+    public void goToCalendar(View view)
+    {
+        startActivity(new Intent(CompanyMenuActivity.this, CalendarActivity.class));
+    }
     public void goToNotification(View view)
     {
         startActivity(new Intent(CompanyMenuActivity.this, CompanyNotificationActivity.class));

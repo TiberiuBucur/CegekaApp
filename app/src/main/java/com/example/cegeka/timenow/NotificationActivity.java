@@ -71,8 +71,6 @@ public class NotificationActivity extends AppCompatActivity {
     }
     public class CustomAdapter extends BaseAdapter
     {
-
-        String value;
         Context mContext;
         List<CheckedTextView> List = new ArrayList<>();
         ArrayList<String> arrayList = new ArrayList<>();

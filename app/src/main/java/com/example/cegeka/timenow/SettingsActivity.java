@@ -19,7 +19,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SettingsActivity extends AppCompatActivity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +36,10 @@ public class SettingsActivity extends AppCompatActivity {
 
         FirebaseAuth.getInstance().sendPasswordResetEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail()).addOnCompleteListener(new OnCompleteListener<Void>() {
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
+                if (task.isSuccessful())
                     Toast.makeText(SettingsActivity.this,"Email sent" , Toast.LENGTH_SHORT).show();
-                }
             }
-        }
-        );
+        });
     }
 
     public void ChangeEmail(View view) {
