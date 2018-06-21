@@ -63,6 +63,8 @@ public class FirstLoginActivity extends AppCompatActivity {
                 ref.setValue(iscompany);
                 ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/name");
                 ref.setValue(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+                ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/email");
+                ref.setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
                 FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
                 Intent intent;
                 if(iscompany)
@@ -78,6 +80,7 @@ public class FirstLoginActivity extends AppCompatActivity {
                         ref.setValue(y);
                         ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
                         ref.setValue("yes");
+
                         intent = new Intent(FirstLoginActivity.this,CompanyMenuActivity.class);
                         startActivity(intent);
                         finish();
