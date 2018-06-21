@@ -5,4 +5,5 @@
     <string name="date_message">Ziua DD.MM.YYYY</string>
     <string name="notification_delete">Sterge notificarea</string>
     <string name="notification_title">Notificari</string>
+    <string name="note_msg">Rezervare noua</string>
 </resources>

@@ -61,7 +61,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Numar de telefon:"
-        android:inputType="textPersonName"
+        android:inputType="phone"
         android:singleLine="false"
         android:textAlignment="viewStart"
         android:textColor="@android:color/holo_blue_light"

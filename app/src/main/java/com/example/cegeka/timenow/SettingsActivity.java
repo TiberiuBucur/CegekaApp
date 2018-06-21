@@ -24,8 +24,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        TextView email = findViewById(R.id.CmpNameTV);
-        email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString());
+        //email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString());
 
         TextView nrTel = findViewById(R.id.PhoneTV);
 
@@ -37,7 +36,7 @@ public class SettingsActivity extends AppCompatActivity {
         FirebaseAuth.getInstance().sendPasswordResetEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail()).addOnCompleteListener(new OnCompleteListener<Void>() {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful())
-                    Toast.makeText(SettingsActivity.this,"Email sent" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SettingsActivity.this,"Email sent for password change" , Toast.LENGTH_SHORT).show();
             }
         });
     }
