@@ -27,6 +27,12 @@ public class CompanyMenuActivity extends AppCompatActivity {
         TextView textComp = (TextView) findViewById(R.id.textView);
         rtb = findViewById(R.id.ratingBar2);
         textComp.setText("Hello " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+        if(!FirebaseAuth.getInstance().getCurrentUser().isEmailVerified())
+        {
+            startActivity(new Intent(CompanyMenuActivity.this,NoVerficationActivity.class));
+            finish();
+        }
+
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
 

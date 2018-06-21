@@ -28,6 +28,13 @@ public class MenuActivity extends AppCompatActivity {
         mUserTV=findViewById(R.id.UserTV);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         updateUI(user);
+        if(!user.isEmailVerified())
+        {
+         startActivity(new Intent(MenuActivity.this,NoVerficationActivity.class));
+         finish();
+        }
+
+
         SearchBtn = (Button) findViewById(R.id.SearchBtn);
         BellBtn = (ImageButton) findViewById(R.id.BellBtn);
         BellBtn.setOnClickListener(new View.OnClickListener() {

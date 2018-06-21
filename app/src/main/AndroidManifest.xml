@@ -29,7 +29,8 @@
         <activity android:name=".FavoritesActivity" />
         <activity android:name=".CalendarActivity" />
         <activity android:name=".DateReservationActivity" />
-        <activity android:name=".ClientProfileActivity"></activity>
+        <activity android:name=".ClientProfileActivity" />
+        <activity android:name=".NoVerficationActivity"></activity>
     </application>
 
 </manifest>
