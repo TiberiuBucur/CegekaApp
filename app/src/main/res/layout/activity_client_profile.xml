@@ -94,6 +94,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/rounded_button"
+        android:onClick="Rate"
         android:text="Rate"
         android:textColor="#ffdf00"
         android:textStyle="bold"

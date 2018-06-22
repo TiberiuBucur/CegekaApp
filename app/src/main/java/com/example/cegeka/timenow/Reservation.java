@@ -6,7 +6,7 @@ package com.example.cegeka.timenow;
 
 public class Reservation
 {
-    public String client;
+    public String client,idrez,idc;
     public int nr_pers, start_time;
 
 }

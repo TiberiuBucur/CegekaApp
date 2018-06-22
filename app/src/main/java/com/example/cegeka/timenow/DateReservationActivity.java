@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,17 +31,22 @@ public class DateReservationActivity extends AppCompatActivity {
     ListView ReservationsLV;
     ArrayList<Reservation> arrayList;
     int day, month, year;
+    Reservation res;
+    boolean canrate;
     final String[] months = {"Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie",
             "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_reservation);
+
         dateTV = (TextView) findViewById(R.id.DateTv);
         Intent intent = getIntent();
         day = intent.getIntExtra("ZI", -1);
         month = intent.getIntExtra("LUNA", -1);
         year = intent.getIntExtra("AN", -1);
+        Date d=new Date(year-1900,month,day);
+         canrate=d.getTime()+5*60*60*1000<System.currentTimeMillis();
         String date = String.valueOf(day) + " " + months[month] + " " + String.valueOf(year);
         dateTV.setText(date);
         ReservationsLV = (ListView) findViewById(R.id.DayReservationsLV);
@@ -57,6 +63,10 @@ public class DateReservationActivity extends AppCompatActivity {
 
                      if (d.getDate() == day && d.getMonth() == month && d.getYear()+1900 == year) {
                          Reservation r = new Reservation();
+                         r.idrez=ds.getKey();
+                         r.idc=ds.child("id").getValue(String.class);
+
+
                          r.client = ds.child("nume").getValue(String.class);
                          r.nr_pers = ds.child("pers").getValue(int.class);
                          r.start_time=d.getMinutes()+d.getHours()*60;
@@ -114,13 +124,17 @@ public class DateReservationActivity extends AppCompatActivity {
                 view = inflater.inflate(R.layout.reservation, null);
             }
             TextView ResTV = (TextView) view.findViewById(R.id.ResDetailTv);
-            Reservation res = arraylist.get(position);
+           res = arraylist.get(position);
             String hour = String.valueOf(res.start_time/60) + ":" + String.valueOf(res.start_time%60);
             ResTV.setText(hour + "\n" + res.client + "\n" + String.valueOf(res.nr_pers));
             ResTV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(DateReservationActivity.this, ClientProfileActivity.class);
+                    intent.putExtra("ID",res.idc);
+                    intent.putExtra("IDR",res.idrez);
+                    intent.putExtra("canrate",canrate);
+
                     startActivity(intent);
                 }
             });
