@@ -24,11 +24,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        //email.setText(FirebaseAuth.getInstance().getCurrentUser().getEmail().toString());
 
-        TextView nrTel = findViewById(R.id.PhoneTV);
-
-        //nrTel.setText(FirebaseAuth.getInstance().getCurrentUser().getNrTel().toString());
     }
 
     public void ChangePassword(View view){
