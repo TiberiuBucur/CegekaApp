@@ -11,7 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/blue2" />
+        android:src="@drawable/blue2"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <Button
         android:id="@+id/DoneButton"
@@ -33,8 +35,8 @@
         android:id="@+id/button4"
         android:layout_width="242dp"
         android:layout_height="46dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="88dp"
         android:background="@drawable/rounded_button"
         android:onClick="ChangeNumber"
         android:text="Schimba numarul de telefon"
@@ -58,28 +60,30 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:textColorHint="#ffdf00"
         android:id="@+id/EmailText"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:hint="Current Email"
+        android:hint="Email nou"
         android:inputType="textWebEmailAddress"
+        android:textColor="#ffdf00"
+        android:textColorHint="#ffdf00"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
     <EditText
-        android:textColorHint="#ffdf00"
         android:id="@+id/NumberText"
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         android:hint="Numar nou"
         android:inputType="phone"
+        android:textColor="#ffdf00"
+        android:textColorHint="#ffdf00"
         android:textSize="40px"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +93,7 @@
         android:id="@+id/button5"
         android:layout_width="165dp"
         android:layout_height="44dp"
-        android:layout_marginBottom="228dp"
+        android:layout_marginBottom="208dp"
         android:layout_marginEnd="184dp"
         android:background="@drawable/rounded_button"
         android:onClick="ChangePassword"
@@ -98,28 +102,27 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="352dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="144dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:id="@+id/TextParola"
+        android:layout_width="349dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Introduce New Password"
-        android:inputType="textPersonName"
+        android:hint="Parola pentru schimbare email"
+        android:inputType="textPassword"
+        android:textColor="#ffdf00"
         android:textColorHint="#ffdf00"
-        android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NumberText"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EmailText"
+        app:layout_constraintVertical_bias="0.384" />
 
 </android.support.constraint.ConstraintLayout>

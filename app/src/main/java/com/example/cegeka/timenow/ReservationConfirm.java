@@ -44,7 +44,7 @@ public class ReservationConfirm extends AppCompatActivity {
                 idu = dataSnapshot.child("id").getValue(String.class);
                 nume = dataSnapshot.child("nume").getValue(String.class);
                 pers = dataSnapshot.child("pers").getValue(Integer.class);
-                MessageTV.setText("Ati primit o rezervare de la " + nume + " pe data de " + String.valueOf(d.getDay()) + "." +
+                MessageTV.setText("Ati primit o rezervare de la " + nume + " pe data de " + String.valueOf(d.getDate()) + "." +
                         String.valueOf(d.getMonth() + 1) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) +
                 ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + " persoana/e.");
         }
@@ -58,7 +58,7 @@ public class ReservationConfirm extends AppCompatActivity {
     {
         FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reservations").child(id).child("yes").setValue(true);
         Message = "Compania " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName() + " a acceptat rezervarea dumneavoastra de pe " +
-                String.valueOf(d.getDay()) + "." +
+                String.valueOf(d.getDate()) + "." +
                 String.valueOf(d.getMonth() +1) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) + ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + " persoana/e.";
 
         FirebaseDatabase.getInstance().getReference("users").child(idu).child("notifications").child(String.valueOf(System.currentTimeMillis())).setValue(Message);
@@ -70,7 +70,7 @@ public class ReservationConfirm extends AppCompatActivity {
     {
         FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("reservations").child(id).removeValue();
         Message = "Compania " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName() + " nu a acceptat rezervarea dumneavoastra de pe " +
-                String.valueOf(d.getDay()) + "." +
+                String.valueOf(d.getDate()) + "." +
                         String.valueOf(d.getMonth() + 1) + "." + String.valueOf(d.getYear()+1900) + " de la ora " + String.valueOf(d.getHours()) + ":" + String.valueOf(d.getMinutes()) + " pentru " + String.valueOf(pers) + " persoana/e.";
         FirebaseDatabase.getInstance().getReference("users").child(idu).child("notifications").child(String.valueOf(System.currentTimeMillis())).setValue(Message);
         startActivity(new Intent(ReservationConfirm.this, CompanyNotificationActivity.class));
