@@ -77,6 +77,7 @@ public class CompanyMenuActivity extends AppCompatActivity {
     }
     public void goToNotification(View view)
     {
+        btn.setImageResource(R.drawable.bell);
         startActivity(new Intent(CompanyMenuActivity.this, CompanyNotificationActivity.class));
     }
     public void SettingsAct(View view) {
