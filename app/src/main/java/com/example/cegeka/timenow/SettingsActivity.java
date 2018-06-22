@@ -42,33 +42,18 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void ChangeEmail(View view) {
+        FirebaseAuth.getInstance().getCurrentUser().updateEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(SettingsActivity.this,"Email schimbat",1).show();
+            }
+        });
 
-        try{
-
-        EditText newEmail = findViewById(R.id.EmailText);
-     //   FirebaseAuth.getInstance().getCurrentUser().updateEmail(newEmail.getText().toString());
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/email");
-        ref.setValue(newEmail.getText().toString());
-
-        } catch (Exception ex){
-            Toast.makeText(this, ex.getMessage().toString(),Toast.LENGTH_SHORT);
-        }
 
     }
 
     public void ChangeNumber(View view){
-        try{
 
-        EditText newNumber = findViewById(R.id.NumberText);
-      //  FirebaseAuth.getInstance().getCurrentUser().updatePhoneNumber((PhoneAuthCredential)newNumber.getText());
-
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/phone");
-        ref.setValue(newNumber.getText().toString());
-
-    } catch (Exception ex){
-        Toast.makeText(this, ex.getMessage().toString(),Toast.LENGTH_SHORT);
-    }
     }
 
     public void DoneButt(View view){

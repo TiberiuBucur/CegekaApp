@@ -19,9 +19,10 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfileCompanyActivity extends AppCompatActivity {
 
     TextView PhoneTv, AdressTv, NameTv;
-    Button ReserveBtn,RateBtn;
+    Button ReserveBtn,RateBtn,mFavBtn;
     String ID;
     RatingBar rtb;
+    boolean fav;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +32,11 @@ public class ProfileCompanyActivity extends AppCompatActivity {
         NameTv = (TextView) findViewById(R.id.CmpNameTV);
         ReserveBtn = (Button) findViewById(R.id.ReservationBtn);
         RateBtn=findViewById(R.id.rateBtn);
+        mFavBtn=findViewById(R.id.FavBtn);
         rtb= findViewById(R.id.ratingBar);
+
         ReserveBtn.setEnabled(false);
+        mFavBtn.setEnabled(false);
         Intent intent = getIntent();
         ID = intent.getStringExtra("ID_COMPANIE");
         DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users/"+ID);
@@ -40,13 +44,29 @@ public class ProfileCompanyActivity extends AppCompatActivity {
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               NameTv.setText(dataSnapshot.child("name").getValue(String.class));
+                NameTv.setText(dataSnapshot.child("name").getValue(String.class));
                 PhoneTv.setText(dataSnapshot.child("phone").getValue(String.class));
                 AdressTv.setText(dataSnapshot.child("adress").getValue(String.class));
                 if(dataSnapshot.child("rating").child("rate").getValue(float.class)!=null)
                 rtb.setRating(dataSnapshot.child("rating").child("rate").getValue(float.class));
+
+                if(dataSnapshot.child("favorite").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).getValue(Boolean.class)!=null)
+                {
+                fav=true;
+                    mFavBtn.setEnabled(true);
+                mFavBtn.setText("Scoate de la favorite");
+                }
+
+                else
+                {
+                    fav=false;
+                    mFavBtn.setEnabled(true);
+                    mFavBtn.setText("Adauga la favorite");
+                }
+
+
                 ReserveBtn.setEnabled(true);
-            }
+                }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -90,15 +110,24 @@ public class ProfileCompanyActivity extends AppCompatActivity {
         });
     }
 
+
+
+
     public void Favourite(View view)
     {
-        DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users").child(ID).child("favorite").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        ref.setValue(true);
-    }
-    public void Scoate(View view)
-    {
-        DatabaseReference ref=FirebaseDatabase.getInstance().getReference("users").child(ID).child("favorite").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        ref.removeValue();
-    }
+        if(!fav) {
+            mFavBtn.setText("Scoate de la favorite");
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(ID).child("favorite").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+            ref.setValue(true);
+        fav=true;
+        }
+
+        else {
+            mFavBtn.setText("Adauga la favorite");
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(ID).child("favorite").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+            ref.removeValue();
+        fav=false;
+        }
+        }
 
 }
