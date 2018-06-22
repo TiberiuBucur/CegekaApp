@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/esketit2"
+        android:src="@drawable/blue2"
         android:scaleType="centerCrop"/>
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Prima configurare"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="#ffdf00"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,7 +44,7 @@
         android:layoutDirection="rtl"
         android:text="Este un cont de firma?"
         android:textAlignment="textStart"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="#ffdf00"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,6 +52,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:textColor="#ffdf00"
         android:id="@+id/PhoneET"
         android:layout_width="223dp"
         android:layout_height="wrap_content"
@@ -64,8 +65,7 @@
         android:inputType="phone"
         android:singleLine="false"
         android:textAlignment="viewStart"
-        android:textColor="@android:color/holo_blue_light"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColorHint="#ffdf00"
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -77,15 +77,15 @@
 
     <Button
         android:id="@+id/SubmitBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="101dp"
         android:layout_height="41dp"
         android:layout_marginBottom="56dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:background="#3232a3"
+        android:background="@drawable/rounded_button"
         android:fontFamily="sans-serif"
         android:text="Trimite"
-        android:textColor="@color/HintColor"
+        android:textColor="#ffdf00"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,8 +102,8 @@
         android:ems="10"
         android:hint="Introduceti adresa:"
         android:inputType="textPersonName"
-        android:textColor="@color/HintColor"
-        android:textColorHint="@color/colorPrimaryDark"
+        android:textColor="#ffdf00"
+        android:textColorHint="#ffdf00"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/SubmitBtn"
         app:layout_constraintEnd_toEndOf="parent"

@@ -9,8 +9,9 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/esketit4"
+        android:src="@drawable/blue1"
         android:scaleType="centerCrop"/>
+
     <ListView
         android:id="@+id/NotificationLV"
         android:layout_width="match_parent"
@@ -27,12 +28,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:text="@string/notification_title"
-        android:textColor="@color/HintColor"
-        android:textSize="30sp"
+        android:textColor="#ffdf00"
+        android:textSize="48sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.184"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

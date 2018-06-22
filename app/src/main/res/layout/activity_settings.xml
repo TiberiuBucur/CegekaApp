@@ -7,54 +7,58 @@
     tools:context=".SettingsActivity">
 
     <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/esketit4"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/blue2" />
 
     <Button
         android:id="@+id/DoneButton"
-        android:layout_width="138dp"
+        android:layout_width="361dp"
         android:layout_height="52dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:background="#3232a3"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/rounded_button"
         android:onClick="DoneButt"
         android:text="Gata"
-        android:textColor="@android:color/holo_blue_bright"
+        android:textColor="#ffdf00"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="234dp"
+        android:layout_width="242dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
-        android:background="#3232a3"
+        android:background="@drawable/rounded_button"
         android:onClick="ChangeNumber"
         android:text="Schimba numarul de telefon"
-        android:textColor="@android:color/holo_blue_bright"
+        android:textColor="#ffdf00"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EmailText" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="223dp"
+        android:layout_width="163dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="#3232a3"
+        android:background="@drawable/rounded_button"
         android:onClick="ChangeEmail"
         android:text="Schimba e-mail-ul"
-        android:textColor="@android:color/holo_blue_bright"
+        android:textColor="#ffdf00"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:textColorHint="#ffdf00"
         android:id="@+id/EmailText"
         android:layout_width="350dp"
         android:layout_height="50dp"
@@ -68,6 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/button3" />
 
     <EditText
+        android:textColorHint="#ffdf00"
         android:id="@+id/NumberText"
         android:layout_width="350dp"
         android:layout_height="50dp"
@@ -82,33 +87,39 @@
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="362dp"
+        android:layout_width="165dp"
         android:layout_height="44dp"
-        android:layout_marginBottom="80dp"
-        android:layout_marginStart="8dp"
-        android:background="#3232a3"
+        android:layout_marginBottom="228dp"
+        android:layout_marginEnd="184dp"
+        android:background="@drawable/rounded_button"
         android:onClick="ChangePassword"
         android:text="Schimba parola"
-        android:textColor="@android:color/holo_blue_bright"
+        android:textColor="#ffdf00"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.228"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="352dp"
         android:layout_height="52dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="144dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Introduce New Password"
         android:inputType="textPersonName"
+        android:textColorHint="#ffdf00"
         android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NumberText"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

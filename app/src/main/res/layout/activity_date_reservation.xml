@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.cegeka.timenow.DateReservationActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/blue1"
+        android:scaleType="centerCrop"/>
+
     <TextView
         android:id="@+id/DateTv"
         android:layout_width="match_parent"
@@ -15,7 +21,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="25dp"
         android:textAlignment="center"
+        android:textColor="#ffdf00"
         android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

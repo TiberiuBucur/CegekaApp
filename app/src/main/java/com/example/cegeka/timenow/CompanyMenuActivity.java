@@ -60,4 +60,10 @@ public class CompanyMenuActivity extends AppCompatActivity {
     public void SettingsAct(View view) {
         startActivity(new Intent(CompanyMenuActivity.this,SettingsActivity.class));
     }
+    public void SignOff(View view)
+    {
+        setResult(RESULT_OK);
+        FirebaseAuth.getInstance().signOut();
+        finish();
+    }
 }

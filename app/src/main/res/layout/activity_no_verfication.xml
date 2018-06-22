@@ -6,16 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".NoVerficationActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/blue1"
+        android:scaleType="centerCrop"/>
+
     <Button
         android:id="@+id/VerificationBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_button"
         android:onClick="Verify"
         android:text="Retrimite verificarea"
+        android:textColor="#ffdf00"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +39,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Email neverificat"
+        android:textColor="#ffdf00"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
