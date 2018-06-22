@@ -126,7 +126,7 @@ public class DateReservationActivity extends AppCompatActivity {
             TextView ResTV = (TextView) view.findViewById(R.id.ResDetailTv);
            res = arraylist.get(position);
             String hour = String.valueOf(res.start_time/60) + ":" + String.valueOf(res.start_time%60);
-            ResTV.setText("Ora: "+hour + "\nNume: " + res.client + "\nNumar persoane:" + String.valueOf(res.nr_pers));
+            ResTV.setText("Ora: "+hour + "\nNume: " + res.client + "\nNumar persoane:" + String.valueOf(res.nr_pers));//detalii rezervare
             ResTV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
