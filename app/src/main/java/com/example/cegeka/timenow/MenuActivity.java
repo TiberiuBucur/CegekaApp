@@ -32,6 +32,7 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         mUserTV=findViewById(R.id.UserTV);
+        rtb=findViewById(R.id.ratingBar2);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
         updateUI(user);
         if(!user.isEmailVerified())
@@ -40,6 +41,7 @@ public class MenuActivity extends AppCompatActivity {
          finish();
         }
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid()).child("notifications");
+
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -60,7 +62,8 @@ public class MenuActivity extends AppCompatActivity {
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("rating").child("rate").getValue(float.class) != null)
+
+                if (dataSnapshot.child("rating").child("rate").getValue(Float.class) != null)
                     rtb.setRating(dataSnapshot.child("rating").child("rate").getValue(float.class));
             }
 
