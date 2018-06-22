@@ -21,6 +21,7 @@ public class FirstLoginActivity extends AppCompatActivity {
     Button SubmitBtn;
     DatabaseReference ref;
     boolean alreadyCheked;
+
     //commit gol
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,24 +32,19 @@ public class FirstLoginActivity extends AppCompatActivity {
         PhoneEt = (EditText) findViewById(R.id.PhoneET);
         SubmitBtn = (Button) findViewById(R.id.SubmitBtn);
         AdressET.setEnabled(false);
-        alreadyCheked=false;
+        alreadyCheked = false;
         TypeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(alreadyCheked)
-                {
+                if (alreadyCheked) {
                     TypeBtn.setChecked(false);
-                    alreadyCheked=false;
-                }
-                else
-                    alreadyCheked=true;
-                if(TypeBtn.isChecked())
-                {
+                    alreadyCheked = false;
+                } else
+                    alreadyCheked = true;
+                if (TypeBtn.isChecked()) {
                     AdressET.setEnabled(true);
                     iscompany = true;
-                }
-                else
-                {
+                } else {
                     iscompany = false;
                     AdressET.setEnabled(false);
                 }
@@ -57,49 +53,50 @@ public class FirstLoginActivity extends AppCompatActivity {
         SubmitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String x,y;
+                String x, y;
                 x = PhoneEt.getText().toString();
-                ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/type");
-                ref.setValue(iscompany);
-                ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/name");
-                ref.setValue(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-                ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/email");
-                ref.setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
-                Intent intent;
-                if(iscompany)
-                {
-                    y = AdressET.getText().toString();
-                    if(x.equals("") || y.equals(""))
-                        Toast.makeText(FirstLoginActivity.this,"Toate campurile sunt obligatorii",Toast.LENGTH_LONG).show();
-                    else
-                    {
-                        ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/phone");
-                        ref.setValue(x);
-                        ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/adress");
-                        ref.setValue(y);
-                        ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
-                        ref.setValue("yes");
+                if (x.length() == 10) {
 
-                        intent = new Intent(FirstLoginActivity.this,CompanyMenuActivity.class);
-                        startActivity(intent);
-                        finish();
+                    ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/type");
+                    ref.setValue(iscompany);
+                    ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/name");
+                    ref.setValue(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+                    ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/email");
+                    ref.setValue(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                    FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
+                    Intent intent;
+                    if (iscompany) {
+                        y = AdressET.getText().toString();
+                        if (x.equals("") || y.equals(""))
+                            Toast.makeText(FirstLoginActivity.this, "Toate campurile sunt obligatorii", Toast.LENGTH_LONG).show();
+                        else {
+                            ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/phone");
+                            ref.setValue(x);
+                            ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/adress");
+                            ref.setValue(y);
+                            ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/firstTime");
+                            ref.setValue("yes");
+
+                            intent = new Intent(FirstLoginActivity.this, CompanyMenuActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    } else {
+                        if (x.equals(""))
+                            Toast.makeText(FirstLoginActivity.this, "Campul telefon este obligatoriu", Toast.LENGTH_LONG).show();
+                        else {
+                            ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/phone");
+                            ref.setValue(x);
+                            intent = new Intent(FirstLoginActivity.this, MenuActivity.class);
+                            ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid() + "/firstTime");
+                            ref.setValue("yes");
+                            startActivity(intent);
+                            finish();
+                        }
                     }
                 }
-                else
-                {
-                    if(x.equals(""))
-                        Toast.makeText(FirstLoginActivity.this, "Campul telefon este obligatoriu", Toast.LENGTH_LONG).show();
-                    else
-                    {
-                        ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/phone");
-                        ref.setValue(x);
-                        intent = new Intent(FirstLoginActivity.this, MenuActivity.class);
-                        ref=FirebaseDatabase.getInstance().getReference("users/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/firstTime");
-                        ref.setValue("yes");
-                        startActivity(intent);
-                        finish();
-                    }
+                else{
+                    PhoneEt.setText("Introduceti un numar de telefon valid");
                 }
 
             }
