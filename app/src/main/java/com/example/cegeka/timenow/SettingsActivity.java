@@ -32,12 +32,18 @@ mparola=findViewById(R.id.TextParola);
     }
 
     public void ChangePassword(View view){
+
+
         FirebaseAuth.getInstance().sendPasswordResetEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail()).addOnCompleteListener(new OnCompleteListener<Void>() {
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful())
-                    Toast.makeText(SettingsActivity.this,"Email sent for password change" , Toast.LENGTH_SHORT).show();
+                if (task.isSuccessful()) {
+                    Toast.makeText(SettingsActivity.this, "Email sent for password change", Toast.LENGTH_SHORT).show();
+
+                    }
             }
         });
+
+
     }
 
     public void ChangeEmail(View view) {
@@ -51,6 +57,8 @@ mparola=findViewById(R.id.TextParola);
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(SettingsActivity.this,"Email schimbat",1).show();
+                       FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("email").setValue(memail.getText().toString());
+
                     }
                 });
 
@@ -64,6 +72,11 @@ mparola=findViewById(R.id.TextParola);
     }
 
     public void ChangeNumber(View view){
+    if(mnumar.getText().length()==10)
+    {
+        FirebaseDatabase.getInstance().getReference("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("phone").setValue(mnumar.getText().toString());
+    }
+
 
     }
 
