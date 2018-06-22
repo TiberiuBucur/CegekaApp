@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class CompanyMenuActivity extends AppCompatActivity {
 
 
     RatingBar rtb;
+    ImageButton btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +28,7 @@ public class CompanyMenuActivity extends AppCompatActivity {
 
         TextView textComp = (TextView) findViewById(R.id.textView);
         rtb = findViewById(R.id.ratingBar2);
+        btn=findViewById(R.id.imageButton);
         textComp.setText("Hello " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
         if(!FirebaseAuth.getInstance().getCurrentUser().isEmailVerified())
         {
@@ -35,12 +38,29 @@ public class CompanyMenuActivity extends AppCompatActivity {
 
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
-
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 if (dataSnapshot.child("rating").child("rate").getValue(float.class) != null)
                     rtb.setRating(dataSnapshot.child("rating").child("rate").getValue(float.class));
+                }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds:dataSnapshot.child("reservations").getChildren())
+                {
+                    if(ds.child("yes").getValue(Boolean.class)==null)
+                        btn.setImageResource(R.drawable.bell2);
+                }
+
+
             }
 
             @Override
@@ -48,6 +68,8 @@ public class CompanyMenuActivity extends AppCompatActivity {
 
             }
         });
+
+
     }
     public void goToCalendar(View view)
     {
