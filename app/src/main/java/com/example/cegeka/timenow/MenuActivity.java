@@ -55,7 +55,7 @@ public class MenuActivity extends AppCompatActivity {
 
 
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
+         ref = FirebaseDatabase.getInstance().getReference("users/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
