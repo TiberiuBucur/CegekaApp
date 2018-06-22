@@ -71,26 +71,34 @@ public class NewReservationActivity extends AppCompatActivity {
             try {
                 FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
               Date d= sdf.parse(x);
-                DatabaseReference ref= FirebaseDatabase.getInstance().getReference("users").child(ID).child("reservations");
-                Random r=new Random();
-                for (int i=1;i<90000000;i++);
-                Random m=new Random(System.currentTimeMillis()+  r.nextInt());
-                String seed=String.valueOf(System.currentTimeMillis())+String.valueOf(user.getUid())+String.valueOf(m.nextLong());
 
-                ref =ref.child(seed);
+              if(d.getTime()-3*60*60*1000>System.currentTimeMillis()) {
+                  DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(ID).child("reservations");
+                  Random r = new Random();
+                  for (int i = 1; i < 90000000; i++) ;
+                  Random m = new Random(System.currentTimeMillis() + r.nextInt());
+                  String seed = String.valueOf(System.currentTimeMillis()) + String.valueOf(user.getUid()) + String.valueOf(m.nextLong());
 
-                ref.child("nume").setValue(user.getDisplayName());
-                ref.child("id").setValue(user.getUid());
-                ref.child("pers").setValue(Integer.parseInt(PersonEt.getText().toString()));
-                ref.child("data").setValue(d);
 
-                finish();
+                  ref = ref.child(seed);
+                  ref.child("nume").setValue(user.getDisplayName());
+                  ref.child("id").setValue(user.getUid());
+                  ref.child("pers").setValue(Integer.parseInt(PersonEt.getText().toString()));
+                  ref.child("data").setValue(d);
+
+                  finish();
+              }
+              else
+              {
+                  Toast.makeText(getApplicationContext(),"Rezervarile trebuie sa fie facute cu 3 ore inainte",1).show();
+
+
+              }
 
             } catch (ParseException e) {
                 Toast.makeText(NewReservationActivity.this,"Format incorect \nFormatul corect este h:mm dd.MM.yyyy ",1).show();
                 }
                 MakeResBtn.setEnabled(true);
-            //functie de trimis rezervarea, cu campurile de data, ora nrpersoane, Id companie si Id client
 
         }
     }
