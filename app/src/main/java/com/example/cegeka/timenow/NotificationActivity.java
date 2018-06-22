@@ -47,8 +47,6 @@ public class NotificationActivity extends AppCompatActivity {
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
-                    NotificationManager NM;
-
                     arrayliststr.add(ds.getValue(String.class));
                     arraylistpos.add(ds.getKey());
                     arrayListState.add(false);
